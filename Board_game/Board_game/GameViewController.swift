@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class GameViewController: UIViewController {
     //commit test
     //commit test pedro
     override func viewDidLoad() {
