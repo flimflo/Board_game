@@ -9,13 +9,19 @@
 import UIKit
 
 class GameViewController: UIViewController {
-    //commit test
-    //commit test pedro
+    
+    var dice = Dice.init()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            dice.roll()
+            print(dice.number)
+        }
+    }
 
 }
 
