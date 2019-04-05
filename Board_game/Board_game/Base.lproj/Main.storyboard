@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ISn-Ol-Zsu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NgG-JH-u3R">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -263,8 +263,186 @@ operación</string>
             </objects>
             <point key="canvasLocation" x="-215.19999999999999" y="869.41529235382313"/>
         </scene>
+        <!--Motion Ex1 View Controller-->
+        <scene sceneID="2Ho-uh-XzX">
+            <objects>
+                <viewController id="m3V-Gk-AKi" customClass="MotionEx1ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jjh-Z2-uAQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTv-y7-xkL">
+                                <rect key="frame" x="16" y="119" width="343" height="214"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OX0-Jf-0tG">
+                                <rect key="frame" x="16" y="387" width="343" height="175"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="200"/>
+                                <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dice1" translatesAutoresizingMaskIntoConstraints="NO" id="XLM-ai-Chb">
+                                <rect key="frame" x="67" y="162" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="etD-Uc-jWz"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="cXT-yt-2Pe" appends="YES" id="vkB-e9-451"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="Counter" destination="OX0-Jf-0tG" id="VLw-Ug-cQg"/>
+                        <outlet property="imgBackground" destination="XLM-ai-Chb" id="8hp-T8-VBl"/>
+                        <outlet property="lbBackground" destination="dTv-y7-xkL" id="6n3-T3-ugt"/>
+                        <outlet property="viewController" destination="Jjh-Z2-uAQ" id="Cm0-1b-9v8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JDW-6z-3eN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cXT-yt-2Pe">
+                    <connections>
+                        <action selector="Tap:" destination="m3V-Gk-AKi" id="IZp-Jy-Ulf"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="616.79999999999995" y="868.51574212893559"/>
+        </scene>
+        <!--Motion Ex2 View Controller-->
+        <scene sceneID="mfw-zW-KPT">
+            <objects>
+                <viewController id="C9C-P3-sqz" customClass="MotionEx2ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w3Q-G8-oyb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cb5-nh-idv">
+                                <rect key="frame" x="16" y="119" width="343" height="214"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0W-I8-Nbr">
+                                <rect key="frame" x="16" y="387" width="343" height="175"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="200"/>
+                                <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dice1" translatesAutoresizingMaskIntoConstraints="NO" id="UPg-p1-Is4">
+                                <rect key="frame" x="67" y="162" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="KTh-Zm-XqU"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="BlQ-RR-fwq" appends="YES" id="ToE-3d-dXc"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="Counter" destination="P0W-I8-Nbr" id="GxN-L1-y8e"/>
+                        <outlet property="imgBackground" destination="UPg-p1-Is4" id="qHt-uM-TUV"/>
+                        <outlet property="lbBackground" destination="cb5-nh-idv" id="V66-It-MJc"/>
+                        <outlet property="viewController" destination="w3Q-G8-oyb" id="jkP-nE-zkD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mJq-mg-bkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="BlQ-RR-fwq">
+                    <connections>
+                        <action selector="Tap:" destination="C9C-P3-sqz" id="8JV-cc-3sf"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1473" y="869"/>
+        </scene>
+        <!--Swipe Recog View Controller-->
+        <scene sceneID="CvV-Br-btw">
+            <objects>
+                <viewController id="NgG-JH-u3R" customClass="SwipeRecogViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9cz-jl-IS0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcD-xg-uL2">
+                                <rect key="frame" x="16" y="119" width="343" height="214"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXY-w5-4hi">
+                                <rect key="frame" x="16" y="387" width="343" height="175"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="200"/>
+                                <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dice1" translatesAutoresizingMaskIntoConstraints="NO" id="l5g-Aa-nbE">
+                                <rect key="frame" x="67" y="162" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="edw-b5-RGE"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="GO7-oG-McP" appends="YES" id="fZL-bS-my4"/>
+                            <outletCollection property="gestureRecognizers" destination="7HI-32-jlo" appends="YES" id="ucX-Dc-dtR"/>
+                            <outletCollection property="gestureRecognizers" destination="a0q-6Q-FdI" appends="YES" id="oUT-6d-3Dn"/>
+                            <outletCollection property="gestureRecognizers" destination="kyg-Fi-cI8" appends="YES" id="Jvd-JF-xBO"/>
+                            <outletCollection property="gestureRecognizers" destination="gT9-CJ-5sZ" appends="YES" id="ySx-ET-iYA"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="Counter" destination="cXY-w5-4hi" id="0zk-8b-ZED"/>
+                        <outlet property="imgBackground" destination="l5g-Aa-nbE" id="Cnb-Wu-gFc"/>
+                        <outlet property="lbBackground" destination="OcD-xg-uL2" id="Vfg-da-845"/>
+                        <outlet property="viewController" destination="9cz-jl-IS0" id="3J5-1j-pxy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ex-11-F4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="GO7-oG-McP">
+                    <connections>
+                        <action selector="Tap:" destination="NgG-JH-u3R" id="fUu-D4-IiE"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="7HI-32-jlo">
+                    <connections>
+                        <action selector="Gesture:" destination="NgG-JH-u3R" id="ndd-cH-ct6"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="a0q-6Q-FdI">
+                    <connections>
+                        <action selector="Gesture:" destination="NgG-JH-u3R" id="ilh-QL-gFC"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="kyg-Fi-cI8">
+                    <connections>
+                        <action selector="Gesture:" destination="NgG-JH-u3R" id="yjP-U0-vcy"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="up" id="gT9-CJ-5sZ">
+                    <connections>
+                        <action selector="Gesture:" destination="NgG-JH-u3R" id="TKB-Mn-0f6"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2271" y="869"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Screen Shot 2019-03-23 at 11.10.49 AM" width="432" height="217"/>
+        <image name="dice1" width="200" height="200"/>
     </resources>
 </document>

@@ -13,6 +13,9 @@
 		6126337E22469B0900164E07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6126337D22469B0900164E07 /* Assets.xcassets */; };
 		6126338122469B0900164E07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6126337F22469B0900164E07 /* LaunchScreen.storyboard */; };
 		612633892246A44100164E07 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612633882246A44100164E07 /* StartViewController.swift */; };
+		61A8EAF8225673A00090B4FA /* MotionEx1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A8EAF7225673A00090B4FA /* MotionEx1ViewController.swift */; };
+		61DE3C4E22575F65002634B9 /* MotionEx2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DE3C4D22575F65002634B9 /* MotionEx2ViewController.swift */; };
+		61DE3C502257683E002634B9 /* SwipeRecogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DE3C4F2257683E002634B9 /* SwipeRecogViewController.swift */; };
 		7832DDF1224828100032CE19 /* MathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832DDF0224828100032CE19 /* MathViewController.swift */; };
 		7847D7C42246A7BF00199B5C /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7847D7C32246A7BF00199B5C /* Dice.swift */; };
 		CE5B2DDF22469E6300348AEE /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B2DDE22469E6300348AEE /* Player.swift */; };
@@ -28,6 +31,9 @@
 		6126338022469B0900164E07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6126338222469B0900164E07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		612633882246A44100164E07 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		61A8EAF7225673A00090B4FA /* MotionEx1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEx1ViewController.swift; sourceTree = "<group>"; };
+		61DE3C4D22575F65002634B9 /* MotionEx2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEx2ViewController.swift; sourceTree = "<group>"; };
+		61DE3C4F2257683E002634B9 /* SwipeRecogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRecogViewController.swift; sourceTree = "<group>"; };
 		7832DDF0224828100032CE19 /* MathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathViewController.swift; sourceTree = "<group>"; };
 		7847D7C32246A7BF00199B5C /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		CE5B2DDE22469E6300348AEE /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -68,8 +74,11 @@
 				6126337822469B0800164E07 /* GameViewController.swift */,
 				7847D7C32246A7BF00199B5C /* Dice.swift */,
 				CE5B2DDE22469E6300348AEE /* Player.swift */,
+				61A8EAF7225673A00090B4FA /* MotionEx1ViewController.swift */,
+				61DE3C4D22575F65002634B9 /* MotionEx2ViewController.swift */,
 				CE5B2DE02246AE8A00348AEE /* Game.swift */,
 				6126337A22469B0800164E07 /* Main.storyboard */,
+				61DE3C4F2257683E002634B9 /* SwipeRecogViewController.swift */,
 				7832DDF0224828100032CE19 /* MathViewController.swift */,
 				612633882246A44100164E07 /* StartViewController.swift */,
 				6126337D22469B0900164E07 /* Assets.xcassets */,
@@ -111,6 +120,7 @@
 				TargetAttributes = {
 					6126337222469B0800164E07 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -153,7 +163,10 @@
 				7832DDF1224828100032CE19 /* MathViewController.swift in Sources */,
 				6126337922469B0800164E07 /* GameViewController.swift in Sources */,
 				612633892246A44100164E07 /* StartViewController.swift in Sources */,
+				61DE3C4E22575F65002634B9 /* MotionEx2ViewController.swift in Sources */,
+				61A8EAF8225673A00090B4FA /* MotionEx1ViewController.swift in Sources */,
 				CE5B2DDF22469E6300348AEE /* Player.swift in Sources */,
+				61DE3C502257683E002634B9 /* SwipeRecogViewController.swift in Sources */,
 				7847D7C42246A7BF00199B5C /* Dice.swift in Sources */,
 				6126337722469B0800164E07 /* AppDelegate.swift in Sources */,
 				CE5B2DE12246AE8A00348AEE /* Game.swift in Sources */,
@@ -311,7 +324,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "flimflo.Board-game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -329,7 +342,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "flimflo.Board-game";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
