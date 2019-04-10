@@ -26,7 +26,7 @@ class SwipeRecogViewController: UIViewController {
     @IBOutlet weak var Counter: UILabel!
     @IBOutlet var viewController: UIView!
     
-    var comenzargesto = false
+    var comenzargesto = true
     var time = 3
     var veces = 0
     var completar = Bool()
@@ -37,7 +37,7 @@ class SwipeRecogViewController: UIViewController {
     var mydirection = [(#imageLiteral(resourceName: "Left"),UISwipeGestureRecognizer.Direction.left),(#imageLiteral(resourceName: "Down"),UISwipeGestureRecognizer.Direction.down),(#imageLiteral(resourceName: "Right"),UISwipeGestureRecognizer.Direction.right),(#imageLiteral(resourceName: "Up"),UISwipeGestureRecognizer.Direction.up)]
     
     @IBAction func Tap(_ sender: Any) {
-        if(!comenzargesto){
+        if(comenzargesto){
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SwipeRecogViewController.action), userInfo: nil, repeats: true)
             Counter.isHidden = false
         }
@@ -45,22 +45,17 @@ class SwipeRecogViewController: UIViewController {
     
     @objc func action(){
         
-        if(comenzargesto){
-            time += 1
-        }
-        else{
             time -= 1
-        }
         
         Counter.text = String(time)
         
-        if(time == 0){
-            
+        if(time == 0 && comenzargesto){
+            time = 16
             tiempo_img.invalidate()
-            comenzargesto = true
             imgBackground.image = mydirection[0].0
             veces = 0
-        }else if(time == 15){
+            comenzargesto = false
+        }else if(time == 0){
             Counter.isHidden = true
             timer.invalidate()
             comenzargesto = false
@@ -75,7 +70,7 @@ class SwipeRecogViewController: UIViewController {
         
         let actual = veces
         
-        if(comenzargesto){
+        if(!comenzargesto){
             
             switch(sender.direction){
             case UISwipeGestureRecognizer.Direction.left:
