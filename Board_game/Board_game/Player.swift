@@ -9,9 +9,25 @@
 import UIKit
 
 class Player: NSObject {
-    var name: String
-    var position: Int
-    var color: UIColor
+    private var name: String
+    private var position: Int
+    private var color: UIColor
+    
+    func movePosition(By number: Int) {
+        position += number
+    }
+    
+    func getPosition() -> Int {
+        return position
+    }
+    
+    func getName() -> String {
+        return name
+    }
+    
+    func getColor() -> UIColor {
+        return color
+    }
     
     init(name: String, position: Int, color: UIColor) {
         self.name = name

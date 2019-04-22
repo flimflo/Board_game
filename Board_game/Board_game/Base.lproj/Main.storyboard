@@ -54,7 +54,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentView" destination="f0R-lA-Lx5" id="O3g-Iu-ZgP"/>
-                        <outlet property="heightConstraint" destination="E1z-yR-rPo" id="iuT-rr-1QJ"/>
+                        <outlet property="contentViewHeightConstraint" destination="E1z-yR-rPo" id="iuT-rr-1QJ"/>
                         <outlet property="mapScrollView" destination="nYd-wc-nYW" id="yxS-nq-nK2"/>
                     </connections>
                 </viewController>
@@ -82,6 +82,7 @@
                                 <state key="normal" title="Jugar"/>
                                 <connections>
                                     <action selector="btJugar:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="jTd-LZ-hnD"/>
+                                    <segue destination="SZA-qm-Upf" kind="show" identifier="GameSeque" id="h1Y-XZ-2sP"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="N2E-u8-e2P">
