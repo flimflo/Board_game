@@ -13,7 +13,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Properties
     
     var dice = Dice.init()
-    var levels = 5
+    var levels = 8
     var cellsPerLevel = 5
     var cells = [Cell]()
     var buttonsAtCell = [Cell: [Button]]()
@@ -49,7 +49,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Game methods
     
     func initAttributes() {
-        
         //Create cells
         let totalCells = levels * cellsPerLevel + levels - 1
         for indexCell in 0..<totalCells{
@@ -87,7 +86,12 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func displayPlayerName() {
-        self.title = "Turno de \(players[turnNumber].getName())"
+        let player = players[turnNumber]
+        let button = Button()
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.setAttributes(color: player.getColor())
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: button)
+        navigationItem.title = "Turno de \(players[turnNumber].getName())"
     }
     
     func incrementTurn() {
@@ -337,7 +341,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         if motion == .motionShake && !gameOver {
             dice.roll()
             let player = players[turnNumber]
-            print(dice.number)
             movePlayer(player: player, distance: dice.number)
         }
     }
