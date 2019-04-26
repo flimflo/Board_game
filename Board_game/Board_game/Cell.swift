@@ -16,7 +16,11 @@ class Cell: UIView {
         self.backgroundColor = UIColor.white
         self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.black.cgColor
-        let numberLabel = UILabel(frame: CGRect(x: self.frame.width / 2, y: self.frame.height / 2, width: self.frame.width, height: self.frame.height))
+        addLabel(number: number)
+    }
+    
+    func addLabel(number: Int) {
+        let numberLabel = UILabel(frame: CGRect(x: self.frame.width / 4, y: self.frame.width / 4, width: self.frame.width - self.frame.width / 4, height: self.frame.width - self.frame.width / 4))
         numberLabel.text = String(number)
         numberLabel.textAlignment = .center
         numberLabel.center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
@@ -40,8 +44,11 @@ class Cell: UIView {
     }
     
     func updateLabelPosition() {
-       self.subviews[0].frame = CGRect(x: self.frame.width / 2, y: self.frame.height / 2, width: self.frame.width, height: self.frame.height)
-       self.subviews[0].center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+       let numberLabel = self.subviews[0] as! UILabel
+        numberLabel.frame = CGRect(x: 0, y: self.frame.width / 4, width: self.frame.width - self.frame.width / 4, height: self.frame.width - self.frame.width / 4)
+        numberLabel.center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+        let fontSize = getFontSize()
+        numberLabel.font = numberLabel.font.withSize(fontSize)
     }
     
     func getUpperLeftOrigin() -> CGPoint {
@@ -74,6 +81,14 @@ class Cell: UIView {
     
     func getUpperCenterOrigin() -> CGPoint {
         return CGPoint(x: self.frame.origin.x + self.frame.width / 4, y: self.frame.origin.y)
+    }
+    
+    private func getFontSize() -> CGFloat {
+        if self.frame.width < 100.0 {
+            return 30
+        } else {
+            return 65
+        }
     }
 
 }

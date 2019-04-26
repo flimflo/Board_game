@@ -49,6 +49,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Game methods
     
     func initAttributes() {
+        
         //Create cells
         let totalCells = levels * cellsPerLevel + levels - 1
         for indexCell in 0..<totalCells{
@@ -60,10 +61,10 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         }
         
         //select cells with challenges
-        let numberOfChallenges = 11
+        let numberOfChallenges = totalCells / 2
 
         for indexCell in 0...numberOfChallenges {
-            let randomNumber = Int.random(in: 1...totalCells - 1)
+            let randomNumber = Int.random(in: 1...totalCells - 2)
             if indexCell % 2 == 0 {
                 cells[randomNumber].backgroundColor = UIColor.green
             } else {
@@ -254,8 +255,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func setCellFrame(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, at index: Int) {
-        let newFrame = CGRect(x: x, y: y, width: width, height: height)
-        cells[index].frame = newFrame
+        cells[index].frame = CGRect(x: x, y: y, width: width, height: height)
         cells[index].updateLabelPosition()
     }
 
