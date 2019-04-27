@@ -14,14 +14,13 @@ class SwipeRecogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
         lbBackground.layer.cornerRadius = 20
         AppUtility.lockOrientation(.portrait)
         tiempo_img = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SwipeRecogViewController.Rotar_img), userInfo: nil, repeats: true)
     }
     
-    @IBOutlet weak var lbBackground: UILabel!
+    @IBOutlet weak var lbBackground: UIView!
     @IBOutlet weak var imgBackground: UIImageView!
     @IBOutlet weak var Counter: UILabel!
     @IBOutlet var viewController: UIView!
@@ -35,12 +34,15 @@ class SwipeRecogViewController: UIViewController {
     var tiempo_img = Timer()
     var index_img = 0
     var mydirection = [(#imageLiteral(resourceName: "Left"),UISwipeGestureRecognizer.Direction.left),(#imageLiteral(resourceName: "Down"),UISwipeGestureRecognizer.Direction.down),(#imageLiteral(resourceName: "Right"),UISwipeGestureRecognizer.Direction.right),(#imageLiteral(resourceName: "Up"),UISwipeGestureRecognizer.Direction.up)]
+    var tapbarrer = true
     
     @IBAction func Tap(_ sender: Any) {
-        if(comenzargesto){
+        if(comenzargesto && tapbarrer){
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SwipeRecogViewController.action), userInfo: nil, repeats: true)
             Counter.isHidden = false
         }
+        Counter.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        tapbarrer = false
     }
     
     @objc func action(){
@@ -74,37 +76,38 @@ class SwipeRecogViewController: UIViewController {
             
             switch(sender.direction){
             case UISwipeGestureRecognizer.Direction.left:
-                if(mydirection[0].1 == UISwipeGestureRecognizer.Direction.left){
-                    veces+=1
-                    mydirection.shuffle()
-                    imgBackground.image = mydirection[0].0
-                }
+                swipe_detect(Gesture: UISwipeGestureRecognizer.Direction.left)
                 
             case UISwipeGestureRecognizer.Direction.down:
-                if(mydirection[0].1 == UISwipeGestureRecognizer.Direction.down){
-                    veces+=1
-                    mydirection.shuffle()
-                    imgBackground.image = mydirection[0].0
-                }
+                swipe_detect(Gesture: UISwipeGestureRecognizer.Direction.down)
             case UISwipeGestureRecognizer.Direction.right:
-                if(mydirection[0].1 == UISwipeGestureRecognizer.Direction.right){
-                    veces+=1
-                    mydirection.shuffle()
-                    imgBackground.image = mydirection[0].0
-                }
+                swipe_detect(Gesture: UISwipeGestureRecognizer.Direction.right)
             case UISwipeGestureRecognizer.Direction.up:
-                if(mydirection[0].1 == UISwipeGestureRecognizer.Direction.up){
-                    veces+=1
-                    mydirection.shuffle()
-                    imgBackground.image = mydirection[0].0
-                }
+                swipe_detect(Gesture: UISwipeGestureRecognizer.Direction.up)
             default:
                 print("")
             }
         }
         
         if(veces > actual){
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            let systemSoundID: SystemSoundID = 1052
+            AudioServicesPlaySystemSound (systemSoundID)
+        }
+    }
+    
+    func swipe_detect(Gesture: UISwipeGestureRecognizer.Direction){
+        if(mydirection[0].1 == Gesture){
+            veces+=1
+            mydirection.shuffle()
+            imgBackground.image = mydirection[0].0
+            viewController.isUserInteractionEnabled = false
+            imgBackground.isHidden = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.imgBackground.isHidden = false
+                self.viewController.isUserInteractionEnabled = true
+            }
+        }else{
+            AudioServicesPlaySystemSound(1053)
         }
     }
     

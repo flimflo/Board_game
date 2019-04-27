@@ -23,7 +23,7 @@ class MotionEx1ViewController: UIViewController {
     }
     
     var motionManager = CMMotionManager()
-    @IBOutlet weak var lbBackground: UILabel!
+    @IBOutlet weak var lbBackground: UIView!
     @IBOutlet weak var imgBackground: UIImageView!
     @IBOutlet weak var Counter: UILabel!
     @IBOutlet var viewController: UIView!
@@ -44,6 +44,7 @@ class MotionEx1ViewController: UIViewController {
             Counter.isHidden = false
         }
         barrera = false
+        Counter.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     @objc func action(){
