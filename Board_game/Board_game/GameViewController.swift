@@ -49,7 +49,8 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Game methods
     
     func initAttributes() {
-        
+        var player = Player(name: "Fernando", position: 0, color: UIColor.blue)
+        players.append(player)
         //Create cells
         let totalCells = levels * cellsPerLevel + levels - 1
         for indexCell in 0..<totalCells{

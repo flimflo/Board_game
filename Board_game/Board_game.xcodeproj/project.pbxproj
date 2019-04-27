@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61052D142274E5BF00024364 /* MotionEx1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61052D132274E5BF00024364 /* MotionEx1ViewController.swift */; };
+		61052D162274F38300024364 /* MotionEx2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61052D152274F38300024364 /* MotionEx2ViewController.swift */; };
+		61052D182274F6C000024364 /* SwipeRecogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61052D172274F6C000024364 /* SwipeRecogViewController.swift */; };
 		6126337722469B0800164E07 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6126337622469B0800164E07 /* AppDelegate.swift */; };
 		6126337922469B0800164E07 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6126337822469B0800164E07 /* GameViewController.swift */; };
 		6126337C22469B0800164E07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6126337A22469B0800164E07 /* Main.storyboard */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		61052D132274E5BF00024364 /* MotionEx1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEx1ViewController.swift; sourceTree = "<group>"; };
+		61052D152274F38300024364 /* MotionEx2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEx2ViewController.swift; sourceTree = "<group>"; };
+		61052D172274F6C000024364 /* SwipeRecogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRecogViewController.swift; sourceTree = "<group>"; };
 		6126337322469B0800164E07 /* Board_game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Board_game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6126337622469B0800164E07 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6126337822469B0800164E07 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +82,9 @@
 				CE3DFF052268147800A3137A /* Cell.swift */,
 				CE3DFF032267DCD500A3137A /* Button.swift */,
 				6126337A22469B0800164E07 /* Main.storyboard */,
+				61052D172274F6C000024364 /* SwipeRecogViewController.swift */,
+				61052D132274E5BF00024364 /* MotionEx1ViewController.swift */,
+				61052D152274F38300024364 /* MotionEx2ViewController.swift */,
 				7832DDF0224828100032CE19 /* MathViewController.swift */,
 				612633882246A44100164E07 /* StartViewController.swift */,
 				6126337D22469B0900164E07 /* Assets.xcassets */,
@@ -156,13 +165,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61052D182274F6C000024364 /* SwipeRecogViewController.swift in Sources */,
 				7832DDF1224828100032CE19 /* MathViewController.swift in Sources */,
 				6126337922469B0800164E07 /* GameViewController.swift in Sources */,
 				612633892246A44100164E07 /* StartViewController.swift in Sources */,
 				CE3DFF042267DCD500A3137A /* Button.swift in Sources */,
 				CE5B2DDF22469E6300348AEE /* Player.swift in Sources */,
 				CE3DFF062268147800A3137A /* Cell.swift in Sources */,
+				61052D162274F38300024364 /* MotionEx2ViewController.swift in Sources */,
 				7847D7C42246A7BF00199B5C /* Dice.swift in Sources */,
+				61052D142274E5BF00024364 /* MotionEx1ViewController.swift in Sources */,
 				6126337722469B0800164E07 /* AppDelegate.swift in Sources */,
 				CE5B2DE12246AE8A00348AEE /* Game.swift in Sources */,
 			);
@@ -310,8 +322,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8924C63JCR;
 				INFOPLIST_FILE = Board_game/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -329,8 +342,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8924C63JCR;
 				INFOPLIST_FILE = Board_game/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
