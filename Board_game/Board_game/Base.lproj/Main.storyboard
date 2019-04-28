@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SZA-qm-Upf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ISn-Ol-Zsu">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,27 +38,100 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="1lo-wW-Z23"/>
                                 </connections>
                             </scrollView>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUz-P4-0wh">
+                                <rect key="frame" x="0.0" y="43" width="375" height="769"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="c1H-4f-obk">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="769"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="zUz-P4-0wh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1LS-OP-mFq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zUz-P4-0wh" secondAttribute="trailing" id="5uw-HW-RQR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="zUz-P4-0wh" secondAttribute="top" constant="45" id="6Q1-ft-Pvr"/>
                             <constraint firstItem="f0R-lA-Lx5" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="B92-cF-RmR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nYd-wc-nYW" secondAttribute="bottom" id="ChG-hT-GBW"/>
                             <constraint firstItem="nYd-wc-nYW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DXJ-7S-AJE"/>
+                            <constraint firstItem="zUz-P4-0wh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="Dlq-ze-N2L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nYd-wc-nYW" secondAttribute="trailing" id="NVj-ml-zLQ"/>
                             <constraint firstItem="nYd-wc-nYW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SJK-SJ-n75"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="niz-Nh-er3">
-                        <barButtonItem key="rightBarButtonItem" title="Opciones" id="Vtg-rn-iRs"/>
+                        <barButtonItem key="rightBarButtonItem" title="Opciones" id="Vtg-rn-iRs">
+                            <connections>
+                                <action selector="optionsButtonPressed:" destination="BYZ-38-t0r" id="5Q0-ND-oz0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="blurVisualEffectView" destination="zUz-P4-0wh" id="E5P-ei-zJk"/>
+                        <outlet property="cancelButton" destination="phh-Gc-rnN" id="thb-Q1-pVh"/>
                         <outlet property="contentView" destination="f0R-lA-Lx5" id="O3g-Iu-ZgP"/>
                         <outlet property="contentViewHeightConstraint" destination="E1z-yR-rPo" id="iuT-rr-1QJ"/>
+                        <outlet property="exitButton" destination="7SU-G3-2Pn" id="2Um-bZ-5tU"/>
                         <outlet property="mapScrollView" destination="nYd-wc-nYW" id="yxS-nq-nK2"/>
+                        <outlet property="menuView" destination="hzL-us-Gd6" id="4eW-x0-AjG"/>
+                        <outlet property="optionsButton" destination="Vtg-rn-iRs" id="jzT-qL-Mdi"/>
+                        <outlet property="restartButton" destination="gE1-1O-lrI" id="FXD-cg-30r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="hzL-us-Gd6">
+                    <rect key="frame" x="0.0" y="0.0" width="469" height="329"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="AZ0-RL-BDR">
+                            <rect key="frame" x="0.0" y="44" width="469" height="251"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gE1-1O-lrI">
+                                    <rect key="frame" x="0.0" y="0.0" width="469" height="70.333333333333329"/>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <state key="normal" title="Reiniciar juego">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sg9-yH-tF1"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SU-G3-2Pn">
+                                    <rect key="frame" x="0.0" y="90.333333333333343" width="469" height="70.333333333333343"/>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Salir del juego">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="exitButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oHS-1J-xUl"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phh-Gc-rnN">
+                                    <rect key="frame" x="0.0" y="180.66666666666666" width="469" height="70.333333333333343"/>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Cancelar">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nPN-8y-cbW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="AZ0-RL-BDR" firstAttribute="centerX" secondItem="AXe-Z1-xN6" secondAttribute="centerX" id="0Ga-dc-1n9"/>
+                        <constraint firstItem="AXe-Z1-xN6" firstAttribute="bottom" secondItem="AZ0-RL-BDR" secondAttribute="bottom" id="0xe-tL-1bp"/>
+                        <constraint firstItem="AXe-Z1-xN6" firstAttribute="trailing" secondItem="AZ0-RL-BDR" secondAttribute="trailing" id="4yd-jR-1QX"/>
+                        <constraint firstItem="AZ0-RL-BDR" firstAttribute="top" secondItem="AXe-Z1-xN6" secondAttribute="top" id="NSN-gX-mmU"/>
+                        <constraint firstItem="AZ0-RL-BDR" firstAttribute="leading" secondItem="AXe-Z1-xN6" secondAttribute="leading" id="qh7-fK-qcU"/>
+                        <constraint firstItem="AZ0-RL-BDR" firstAttribute="centerY" secondItem="AXe-Z1-xN6" secondAttribute="centerY" id="u0f-Cb-2hV"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="AXe-Z1-xN6"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="1559.2" y="143.3497536945813"/>
         </scene>
@@ -82,7 +155,7 @@
                                 <state key="normal" title="Jugar"/>
                                 <connections>
                                     <action selector="btJugar:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="jTd-LZ-hnD"/>
-                                    <segue destination="SZA-qm-Upf" kind="show" identifier="GameSeque" id="h1Y-XZ-2sP"/>
+                                    <segue destination="SZA-qm-Upf" kind="show" identifier="gameSegue" id="RwJ-Vx-ZkD"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="N2E-u8-e2P">

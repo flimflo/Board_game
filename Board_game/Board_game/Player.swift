@@ -17,6 +17,10 @@ class Player: NSObject {
         position += number
     }
     
+    func setPosition(_ position: Int) {
+        self.position = position
+    }
+    
     func getPosition() -> Int {
         return position
     }
@@ -29,9 +33,9 @@ class Player: NSObject {
         return color
     }
     
-    init(name: String, position: Int, color: UIColor) {
+    init(name: String, color: UIColor) {
         self.name = name
-        self.position = position
+        self.position = 0
         self.color = color
     }
 }

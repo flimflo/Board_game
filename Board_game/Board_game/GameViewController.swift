@@ -19,14 +19,21 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     var buttonsAtCell = [Cell: [Button]]()
     var players = [Player]()
     var buttons = [Player: Button]()
-    var isMapInitialized = false
-    var gameOver = false
-    var turnNumber = 0
+    var isMapInitialized = Bool()
+    var gameOver = Bool()
+    var turnNumber = Int()
+    var alert = UIAlertController()
     
     // MARK: - Views
     
     @IBOutlet weak var mapScrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet var menuView: UIView!
+    @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var optionsButton: UIBarButtonItem!
+    @IBOutlet weak var blurVisualEffectView: UIVisualEffectView!
     
     // MARK: - Layout constraints
     
@@ -39,16 +46,34 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         initAttributes()
         mapScrollView.addSubview(contentView)
         displayPlayerName()
+        blurVisualEffectView.isHidden = true
     }
     
     override func viewDidLayoutSubviews() {
         setMap()
+        setMenuFrame()
         isMapInitialized = true
     }
     
     // MARK: - Game methods
     
     func initAttributes() {
+        
+        //remove previous data if any
+        buttonsAtCell.removeAll()
+        buttons.removeAll()
+        cells.removeAll()
+        isMapInitialized = false
+        gameOver = false
+        turnNumber = 0
+        
+        for cell in contentView.subviews {
+            cell.removeFromSuperview()
+        }
+        
+        for player in players {
+            player.setPosition(0)
+        }
         
         //Create cells
         let totalCells = levels * cellsPerLevel + levels - 1
@@ -320,6 +345,71 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    //MARK: - Menu methods
+    @IBAction func optionsButtonPressed(_ sender: Any) {
+        optionsButton.isEnabled = false
+        blurVisualEffectView.isHidden = false
+        menuView.alpha = 0
+        view.addSubview(menuView)
+        setButtonsAttributes()
+        UIView.animate(withDuration: 0.3) {
+            self.blurVisualEffectView.alpha = 1
+            self.menuView.alpha = 1
+        }
+        menuView.clipsToBounds = true
+        optionsButton.isEnabled = false
+    }
+    
+    func displayAlert(title: String, optionType: String) {
+        alert = UIAlertController(title: title, message: "¿Quieres continuar?", preferredStyle: .alert)
+        
+        var action = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
+        
+        alert.addAction(action)
+        
+        action = UIAlertAction(title: "Continuar", style: .default, handler: { action in
+            if optionType == "reset" {
+                self.initAttributes()
+                self.cancelButtonPressed(self)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func resetGame(_ sender: Any) {
+        displayAlert(title: "¿Estas seguro de reiniciar el juego?", optionType: "reset")
+    }
+    
+    @IBAction func exitButtonPressed(_ sender: Any) {
+        displayAlert(title: "¿Estas seguro de salir del juego?", optionType: "exit")
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        UIView.animate(withDuration: 0.3) {
+            self.menuView.alpha = 0
+            self.blurVisualEffectView.alpha = 0
+            self.menuView.removeFromSuperview()
+        }
+        optionsButton.isEnabled = true
+    }
+    
+    func setMenuFrame() {
+        menuView.frame.size = CGSize(width: view.frame.width * 0.8, height: view.frame.height * 0.6)
+        menuView.center = view.center
+        setButtonsAttributes()
+    }
+    
+    func setButtonsAttributes() {
+        let viewHeight = menuView.frame.height
+        restartButton.setAttributes(Height: viewHeight)
+        exitButton.setAttributes(Height: viewHeight)
+        cancelButton.setAttributes(Height: viewHeight)
+    }
     
     //MARK: Safe area insets methods
     
@@ -351,4 +441,23 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         return contentView
     }
 
+}
+
+extension UIButton {
+    func setAttributes(Height: CGFloat) {
+        self.layer.cornerRadius = 10.0
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderWidth = 3.0
+        self.titleLabel?.font = self.titleLabel?.font.withSize(getFontSize(height: Height))
+        self.titleLabel?.adjustsFontSizeToFitWidth = true
+    }
+    
+    private func getFontSize(height: CGFloat) -> CGFloat {
+        if height < 250 {
+            return 30
+        } else if height < 500 {
+            return 45
+        }
+        return 70
+    }
 }
