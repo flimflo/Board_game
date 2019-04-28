@@ -9,10 +9,11 @@
 import UIKit
 
 class MathViewController: UIViewController {
-
+    
     @IBOutlet weak var lbProblem: UILabel!
-    @IBOutlet weak var tfAnswer: UITextField!
-    @IBOutlet weak var btCheck: UIButton!
+    @IBOutlet weak var btA: UIButton!
+    @IBOutlet weak var btB: UIButton!
+    @IBOutlet weak var lbInstructions: UILabel!
     
     let MIN = 0
     let MAX = 10
@@ -23,11 +24,19 @@ class MathViewController: UIViewController {
     var problem: String!
     var answer: Int!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        buildProblem()
+        btA.titleLabel?.adjustsFontSizeToFitWidth = true
+        btA.titleLabel?.lineBreakMode = .byClipping
+        //crea problema sin resultado negativo
+        repeat {
+            buildProblem()
+        } while (answer < 0)
+        
+        setOptions()
+        
         lbProblem.text = problem
-
     }
     
     func buildProblem() {
@@ -36,7 +45,7 @@ class MathViewController: UIViewController {
         sign = signs.randomElement();
         
         problem = "\(String(a)) "
-        problem += sign 
+        problem += sign
         problem += " \(String(b)) = ?"
         
         switch sign {
@@ -51,40 +60,48 @@ class MathViewController: UIViewController {
         }
     }
     
-    @IBAction func checar(_ sender: UIButton) {
-        if let ans = Int(tfAnswer.text!) {
-            if ans == answer {
-                //unwind? y mensaje de correcto
-                let alerta = UIAlertController(title: "Respuesta Correcta", message: "mensaje de prueba", preferredStyle: .alert)
-                let accion = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                
-                alerta.addAction(accion)
-                
-                present(alerta, animated: true, completion: nil)
-            }
-            else {
-                tfAnswer.shake()
-            }
+    func setOptions() {
+        //random int similar to answer
+        var faux = Int()
+        repeat {
+            faux = answer + Int.random(in: -10...10)
+        } while(faux == answer && faux > 0)
+        
+        //sets the correct answer on a random button
+        if (Bool.random()) {
+            btA.setTitle(String(answer), for: .normal)
+            btB.setTitle(String(faux), for: .normal)
         }
         else {
-            tfAnswer.shake()
+            btB.setTitle(String(answer), for: .normal)
+            btA.setTitle(String(faux), for: .normal)
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func checar(_ sender: UIButton) {
+        //checks if the text in the button matches the answer
+        if (sender.titleLabel?.text == String(answer)){
+            let alerta = UIAlertController(title: "Respuesta Correcta", message: "mensaje de prueba", preferredStyle: .alert)
+            let accion = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+            alerta.addAction(accion)
+            
+            present(alerta, animated: true, completion: nil)
+        }
+            //shakes the button if theres no match
+        else {
+            sender.shake()
+        }
+        
+        
     }
-    */
-
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        view.layoutIfNeeded()
+    }
     
 }
 
-extension UITextField {
+extension UIView {
     func shake() {
         let animation = CABasicAnimation(keyPath: "position")
         animation.duration = 0.05
