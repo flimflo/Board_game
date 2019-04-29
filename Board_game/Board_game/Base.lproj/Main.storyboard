@@ -38,27 +38,99 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="1lo-wW-Z23"/>
                                 </connections>
                             </scrollView>
+                            <visualEffectView opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFo-9y-3aB">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aaV-Vc-IFf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SFo-9y-3aB" secondAttribute="trailing" id="3TP-DH-OVp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="SFo-9y-3aB" secondAttribute="top" id="7mW-WU-xMw"/>
                             <constraint firstItem="f0R-lA-Lx5" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="B92-cF-RmR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nYd-wc-nYW" secondAttribute="bottom" id="ChG-hT-GBW"/>
                             <constraint firstItem="nYd-wc-nYW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DXJ-7S-AJE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nYd-wc-nYW" secondAttribute="trailing" id="NVj-ml-zLQ"/>
+                            <constraint firstItem="SFo-9y-3aB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Owx-kY-gct"/>
+                            <constraint firstItem="SFo-9y-3aB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OzW-dH-eSG"/>
                             <constraint firstItem="nYd-wc-nYW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SJK-SJ-n75"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SFo-9y-3aB" secondAttribute="bottom" id="vhm-yr-uJ0"/>
+                            <constraint firstItem="SFo-9y-3aB" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="wkO-P7-ZDu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="niz-Nh-er3">
-                        <barButtonItem key="rightBarButtonItem" title="Opciones" id="Vtg-rn-iRs"/>
+                        <barButtonItem key="rightBarButtonItem" title="Opciones" id="Vtg-rn-iRs">
+                            <connections>
+                                <action selector="optionsButtonPressed:" destination="BYZ-38-t0r" id="UD6-oY-eav"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="blurVisualEffectView" destination="SFo-9y-3aB" id="Cbr-1r-Apk"/>
+                        <outlet property="cancelButton" destination="CfG-IQ-rBt" id="c3y-GB-KV3"/>
                         <outlet property="contentView" destination="f0R-lA-Lx5" id="O3g-Iu-ZgP"/>
                         <outlet property="contentViewHeightConstraint" destination="E1z-yR-rPo" id="iuT-rr-1QJ"/>
+                        <outlet property="exitButton" destination="Q7s-VI-IhN" id="dag-Sn-RJo"/>
                         <outlet property="mapScrollView" destination="nYd-wc-nYW" id="yxS-nq-nK2"/>
+                        <outlet property="menuView" destination="xBf-08-LwA" id="NE8-zF-7gj"/>
+                        <outlet property="optionsButton" destination="Vtg-rn-iRs" id="Jg3-ZV-EkN"/>
+                        <outlet property="restartButton" destination="cuq-da-QId" id="wXB-ri-V0C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="xBf-08-LwA">
+                    <rect key="frame" x="0.0" y="0.0" width="381" height="283"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="fLM-Rb-Do1">
+                            <rect key="frame" x="0.0" y="5" width="381" height="283"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuq-da-QId">
+                                    <rect key="frame" x="0.0" y="0.0" width="381" height="73"/>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Reiniciar juego">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ur-UP-U76"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7s-VI-IhN">
+                                    <rect key="frame" x="0.0" y="105" width="381" height="73"/>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Salir del juego">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="exitButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KXp-S0-Hho"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CfG-IQ-rBt">
+                                    <rect key="frame" x="0.0" y="210" width="381" height="73"/>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Cancelar">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t6V-0i-Nwp"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="fLM-Rb-Do1" firstAttribute="centerY" secondItem="3lJ-Rh-fVs" secondAttribute="centerY" id="8Uf-Hf-x3l"/>
+                        <constraint firstItem="fLM-Rb-Do1" firstAttribute="width" secondItem="xBf-08-LwA" secondAttribute="width" id="rY0-YK-ozX"/>
+                        <constraint firstItem="fLM-Rb-Do1" firstAttribute="centerX" secondItem="3lJ-Rh-fVs" secondAttribute="centerX" id="vNH-ry-Fib"/>
+                        <constraint firstItem="fLM-Rb-Do1" firstAttribute="height" secondItem="xBf-08-LwA" secondAttribute="height" id="zj6-DA-jlI"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="3lJ-Rh-fVs"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="1559.2" y="143.3497536945813"/>
         </scene>
@@ -82,6 +154,7 @@
                                 <state key="normal" title="Jugar"/>
                                 <connections>
                                     <action selector="btJugar:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="jTd-LZ-hnD"/>
+                                    <segue destination="SZA-qm-Upf" kind="show" identifier="gameSegue" id="C2r-Hu-nwp"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="N2E-u8-e2P">
@@ -220,7 +293,7 @@
         <!--Math View Controller-->
         <scene sceneID="ygX-Xk-Emp">
             <objects>
-                <viewController id="0tR-jO-wod" customClass="MathViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Math1" id="0tR-jO-wod" customClass="MathViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k6D-YN-EYL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -286,16 +359,18 @@
                         <outlet property="btB" destination="2Sh-nX-2Wq" id="v8w-cf-ZRc"/>
                         <outlet property="lbInstructions" destination="hTK-jP-wWg" id="IeF-ru-cfI"/>
                         <outlet property="lbProblem" destination="spp-jD-8oa" id="crb-b8-I9W"/>
+                        <segue destination="LMh-Nz-mh3" kind="unwind" unwindAction="unwindFromGame:" id="LT2-ot-FMu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBu-Rk-mkR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="LMh-Nz-mh3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-215.19999999999999" y="869.41529235382313"/>
         </scene>
         <!--Math2 View Controller-->
         <scene sceneID="RPa-m3-faE">
             <objects>
-                <viewController id="rAe-9S-YzH" customClass="Math2ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Math2" id="rAe-9S-YzH" customClass="Math2ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uvg-Lz-d2h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -385,7 +460,7 @@
         <!--Math3 View Controller-->
         <scene sceneID="1CI-VS-QVx">
             <objects>
-                <viewController id="mOm-wR-j1t" customClass="Math3ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Math3" id="mOm-wR-j1t" customClass="Math3ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vJw-Ie-m4h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -521,7 +596,7 @@
         <!--Motion Ex1 View Controller-->
         <scene sceneID="zMk-v9-xSv">
             <objects>
-                <viewController id="JwR-3p-bVd" customClass="MotionEx1ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Motion1" id="JwR-3p-bVd" customClass="MotionEx1ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QLk-M4-kv6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -584,7 +659,7 @@
         <!--Motion Ex2 View Controller-->
         <scene sceneID="etG-8I-zf5">
             <objects>
-                <viewController id="Sv3-JY-KdA" customClass="MotionEx2ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Motion2" id="Sv3-JY-KdA" customClass="MotionEx2ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZKZ-KP-x0y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -596,7 +671,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="356.33333333333331" height="365.33333333333331"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Motion_Ex2_1" translatesAutoresizingMaskIntoConstraints="NO" id="mXo-Ya-gUi">
-                                                <rect key="frame" x="89.000000000000014" y="91.333333333333357" width="178.33333333333383" height="182.66666666666663"/>
+                                                <rect key="frame" x="89.000000000000014" y="91.333333333333357" width="178.33333333333337" height="182.66666666666663"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -647,7 +722,7 @@
         <!--Swipe Recog View Controller-->
         <scene sceneID="whS-Hu-PGs">
             <objects>
-                <viewController id="kf8-so-lut" customClass="SwipeRecogViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Swipe1" id="kf8-so-lut" customClass="SwipeRecogViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="584-lH-3LT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

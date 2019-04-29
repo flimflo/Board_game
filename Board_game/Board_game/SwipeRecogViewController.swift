@@ -131,7 +131,12 @@ class SwipeRecogViewController: UIViewController {
             AudioServicesPlaySystemSound (systemSoundID)
         }
         let alerta = UIAlertController(title: respuesta, message: "mensaje de prueba", preferredStyle: .alert)
-        let accion = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        let accion = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
+            let navigationVC = self.presentingViewController as! UINavigationController
+            let gameVC = navigationVC.topViewController as! GameViewController
+            gameVC.isChallengeCompleted(true)
+            self.dismiss(animated: true, completion: nil)
+        })
         alerta.addAction(accion)
         present(alerta, animated: true, completion: nil)
     }
