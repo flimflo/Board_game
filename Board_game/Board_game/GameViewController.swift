@@ -43,6 +43,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //players.append(Player(name: "test", color: .blue))
         initAttributes()
         mapScrollView.addSubview(contentView)
         displayPlayerName()
@@ -430,6 +431,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake && !gameOver {
             dice.roll()
+            animateDie()
             let player = players[turnNumber]
             movePlayer(player: player, distance: dice.number)
         }
@@ -439,6 +441,28 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return contentView
+    }
+    
+    // MARK: - Animation for dice roll
+    func animateDie() {
+        let width = self.view.bounds.width - getLeftSafeAreaInsets() - getRightSafeAreaInsets()
+        let height = self.view.bounds.height
+        let side = width/3
+        let xPos = width/2 - side/2
+        let yPos = height/2 - side/2
+        print(width, height)
+        let imgDie = UIImageView(frame: CGRect(x: xPos, y: yPos, width: side, height: side))
+        view.addSubview(imgDie)
+        imgDie.image = dice.animatedDie
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {_ in
+            imgDie.image = self.dice.curSide
+        })
+        
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: {_ in
+            imgDie.removeFromSuperview()
+        })
+        
     }
 
 }
