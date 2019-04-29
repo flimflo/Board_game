@@ -30,7 +30,7 @@ class SwipeRecogViewController: UIViewController {
     var veces = 0
     var completar = Bool()
     var timer = Timer()
-    var arrimg = [#imageLiteral(resourceName: "dice1"),#imageLiteral(resourceName: "dice2"),#imageLiteral(resourceName: "dice3")]
+    var arrimg = [#imageLiteral(resourceName: "Swipe_2"),#imageLiteral(resourceName: "Swipe_3"),#imageLiteral(resourceName: "Swipe_4"),#imageLiteral(resourceName: "Swipe_1")]
     var tiempo_img = Timer()
     var index_img = 0
     var mydirection = [(#imageLiteral(resourceName: "Left"),UISwipeGestureRecognizer.Direction.left),(#imageLiteral(resourceName: "Down"),UISwipeGestureRecognizer.Direction.down),(#imageLiteral(resourceName: "Right"),UISwipeGestureRecognizer.Direction.right),(#imageLiteral(resourceName: "Up"),UISwipeGestureRecognizer.Direction.up)]
@@ -115,7 +115,7 @@ class SwipeRecogViewController: UIViewController {
         
         var respuesta = String()
         
-        if(veces > 10){
+        if(veces > 12){
             completar = true
         }else{
             completar = false
@@ -140,7 +140,7 @@ class SwipeRecogViewController: UIViewController {
         
         imgBackground.image = arrimg[index_img]
         index_img += 1
-        if(index_img == 3){
+        if(index_img == 4){
             index_img = 0
         }
     }

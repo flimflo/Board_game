@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ISn-Ol-Zsu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kf8-so-lut">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -412,7 +412,7 @@
                                                 </state>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnG-8o-NOL" userLabel="pos2">
-                                                <rect key="frame" x="118.33333333333334" y="10" width="101.33333333333334" height="120"/>
+                                                <rect key="frame" x="118.33333333333331" y="10" width="101" height="120"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="90"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -433,7 +433,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbA-qq-Zp4" userLabel="Bt2">
-                                                <rect key="frame" x="118.33333333333334" y="140" width="101.33333333333334" height="120"/>
+                                                <rect key="frame" x="118.33333333333331" y="140" width="101" height="120"/>
                                                 <color key="backgroundColor" red="0.076685495670000006" green="0.47192865610000001" blue="0.96561425919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="90"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -445,7 +445,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daO-26-JPp" userLabel="Bt3">
-                                                <rect key="frame" x="227.66666666666671" y="140" width="101.33333333333334" height="120"/>
+                                                <rect key="frame" x="227.33333333333334" y="140" width="101.33333333333334" height="120"/>
                                                 <color key="backgroundColor" red="0.076685495670000006" green="0.47192865610000001" blue="0.96561425919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="90"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -457,7 +457,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vc-2B-WJI" userLabel="pos3">
-                                                <rect key="frame" x="227.66666666666671" y="10" width="101.33333333333334" height="120"/>
+                                                <rect key="frame" x="227.33333333333334" y="10" width="101.33333333333334" height="120"/>
                                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="90"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -658,8 +658,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cWU-vE-Ysi">
                                         <rect key="frame" x="0.0" y="0.0" width="356.33333333333331" height="365.33333333333331"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dice1" translatesAutoresizingMaskIntoConstraints="NO" id="WFz-01-IdB">
-                                                <rect key="frame" x="89.000000000000014" y="91.333333333333357" width="178.33333333333337" height="182.66666666666663"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swipe_1" translatesAutoresizingMaskIntoConstraints="NO" id="WFz-01-IdB">
+                                                <rect key="frame" x="89.000000000000014" y="91.333333333333357" width="178.33333333333337" height="182.66666666666708"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -754,6 +754,6 @@
         <image name="Motion_Ex1_1" width="1910" height="2456"/>
         <image name="Motion_Ex2_1" width="3053" height="2097"/>
         <image name="Screen Shot 2019-03-23 at 11.10.49 AM" width="432" height="217"/>
-        <image name="dice1" width="200" height="200"/>
+        <image name="Swipe_1" width="1152" height="1753"/>
     </resources>
 </document>
