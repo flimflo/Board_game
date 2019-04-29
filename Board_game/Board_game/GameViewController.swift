@@ -22,7 +22,10 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     var isMapInitialized = Bool()
     var gameOver = Bool()
     var turnNumber = Int()
+    var isGreenChallenge = Bool()
     var alert = UIAlertController()
+    var storyboardIdentifiers = ["Motion1", "Motion2", "Math1", "Math2", "Math3", "Swipe1"]
+    var disableMovePlayer = false
     
     // MARK: - Views
     
@@ -129,11 +132,33 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func isAChallenge(cellNumber: Int) {
+        let randomNumber = Int.random(in: 0..<storyboardIdentifiers.count)
+        let vcIdentifier = storyboardIdentifiers[randomNumber]
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: vcIdentifier)
         if cells[cellNumber].backgroundColor == UIColor.red {
-            print("red challenge")
+            isGreenChallenge = false
+            self.present(vc!, animated: true, completion: nil)
         } else if cells[cellNumber].backgroundColor == UIColor.green {
-            print("green challenge")
+            isGreenChallenge = true
+            self.present(vc!, animated: true, completion: nil)
         }
+    }
+    
+    func isChallengeCompleted(_ completed: Bool) {
+        
+        let player = players[turnNumber]
+        let distance = Int.random(in: 1...6)
+        
+        if completed, isGreenChallenge {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self.movePlayer(player: player, distance: distance, challengesActivated: false)
+            }
+        } else if !completed, !isGreenChallenge {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self.movePlayer(player: player, distance: -distance, challengesActivated: false)
+            }
+        }
+        
     }
     
     //Removes a button from a cell's button list
@@ -158,7 +183,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         buttonsAtCell[cell] = buttons
     }
     
-    func movePlayer(player: Player, distance: Int) {
+    func movePlayer(player: Player, distance: Int, challengesActivated: Bool) {
         
         let previousPosition = player.getPosition()
         let playerButton = buttons[player]!
@@ -202,7 +227,12 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             }
         }
         
-        isAChallenge(cellNumber: newPosition)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if challengesActivated {
+                self.isAChallenge(cellNumber: newPosition)
+            }
+            self.disableMovePlayer = false
+        }
         
         if nextPosition == cells.count - 1 {
             gameOver = true
@@ -348,10 +378,11 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     //MARK: - Menu methods
     @IBAction func optionsButtonPressed(_ sender: Any) {
         optionsButton.isEnabled = false
+        disableMovePlayer = true
         blurVisualEffectView.isHidden = false
         menuView.alpha = 0
         view.addSubview(menuView)
-        setButtonsAttributes()
+        setMenuButtonsAttributes()
         UIView.animate(withDuration: 0.3) {
             self.blurVisualEffectView.alpha = 1
             self.menuView.alpha = 1
@@ -396,15 +427,16 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             self.menuView.removeFromSuperview()
         }
         optionsButton.isEnabled = true
+        disableMovePlayer = false
     }
     
     func setMenuFrame() {
         menuView.frame.size = CGSize(width: view.frame.width * 0.8, height: view.frame.height * 0.6)
         menuView.center = view.center
-        setButtonsAttributes()
+        setMenuButtonsAttributes()
     }
     
-    func setButtonsAttributes() {
+    func setMenuButtonsAttributes() {
         let viewHeight = menuView.frame.height
         restartButton.setAttributes(Height: viewHeight)
         exitButton.setAttributes(Height: viewHeight)
@@ -428,10 +460,11 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Motion methods
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        if motion == .motionShake && !gameOver {
+        if motion == .motionShake, !gameOver, !disableMovePlayer {
+            disableMovePlayer = true
             dice.roll()
             let player = players[turnNumber]
-            movePlayer(player: player, distance: dice.number)
+            movePlayer(player: player, distance: dice.number, challengesActivated: true)
         }
     }
     

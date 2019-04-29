@@ -65,7 +65,7 @@ class MathViewController: UIViewController {
         var faux = Int()
         repeat {
             faux = answer + Int.random(in: -10...10)
-        } while(faux == answer && faux > 0)
+        } while(faux == answer && faux >= 0)
         
         //sets the correct answer on a random button
         if (Bool.random()) {
@@ -82,19 +82,21 @@ class MathViewController: UIViewController {
         //checks if the text in the button matches the answer
         if (sender.titleLabel?.text == String(answer)){
             let alerta = UIAlertController(title: "Respuesta Correcta", message: "mensaje de prueba", preferredStyle: .alert)
-            let accion = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            
+            let accion = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
+                let navigationVC = self.presentingViewController as! UINavigationController
+                let gameVC = navigationVC.topViewController as! GameViewController
+                gameVC.isChallengeCompleted(true)
+                self.dismiss(animated: true, completion: nil)
+            })
             alerta.addAction(accion)
-            
             present(alerta, animated: true, completion: nil)
         }
             //shakes the button if theres no match
         else {
             sender.shake()
         }
-        
-        
     }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         view.layoutIfNeeded()
     }

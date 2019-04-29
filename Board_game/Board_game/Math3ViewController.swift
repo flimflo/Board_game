@@ -86,7 +86,12 @@ class Math3ViewController: UIViewController {
             top3.backgroundColor = darkgreen
             
             let alerta = UIAlertController(title: "Respuesta Correcta", message: "mensaje de prueba", preferredStyle: .alert)
-            let accion = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            let accion = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
+                let navigationVC = self.presentingViewController as! UINavigationController
+                let gameVC = navigationVC.topViewController as! GameViewController
+                gameVC.isChallengeCompleted(true)
+                self.dismiss(animated: true, completion: nil)
+            })
             
             alerta.addAction(accion)
             
