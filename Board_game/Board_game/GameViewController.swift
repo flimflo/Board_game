@@ -479,6 +479,12 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         return contentView
     }
     
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        let offsetY =  max(mapScrollView.bounds.width - mapScrollView.contentSize.width * 0.5, self.view.frame.width / 4)
+        let offsetX = self.view.frame.width / 8
+        mapScrollView.contentInset = UIEdgeInsets(top: offsetX, left: offsetY, bottom: offsetX, right: offsetY)
+    }
+    
     // MARK: - Animation for dice roll
     func animateDie() {
         let width = self.view.bounds.width - getLeftSafeAreaInsets() - getRightSafeAreaInsets()
