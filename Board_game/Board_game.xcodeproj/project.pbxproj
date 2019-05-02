@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		610224BE227B3B3B00C3CADE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610224BD227B3B3B00C3CADE /* ViewController.swift */; };
 		61052D142274E5BF00024364 /* MotionEx1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61052D132274E5BF00024364 /* MotionEx1ViewController.swift */; };
 		61052D162274F38300024364 /* MotionEx2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61052D152274F38300024364 /* MotionEx2ViewController.swift */; };
 		61052D182274F6C000024364 /* SwipeRecogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61052D172274F6C000024364 /* SwipeRecogViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		610224BD227B3B3B00C3CADE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		61052D132274E5BF00024364 /* MotionEx1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEx1ViewController.swift; sourceTree = "<group>"; };
 		61052D152274F38300024364 /* MotionEx2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionEx2ViewController.swift; sourceTree = "<group>"; };
 		61052D172274F6C000024364 /* SwipeRecogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeRecogViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				CE3DFF052268147800A3137A /* Cell.swift */,
 				CE3DFF032267DCD500A3137A /* Button.swift */,
 				6126337A22469B0800164E07 /* Main.storyboard */,
+				610224BD227B3B3B00C3CADE /* ViewController.swift */,
 				78C3FEC5227516A200CC5C08 /* Math3ViewController.swift */,
 				61052D172274F6C000024364 /* SwipeRecogViewController.swift */,
 				61052D132274E5BF00024364 /* MotionEx1ViewController.swift */,
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				610224BE227B3B3B00C3CADE /* ViewController.swift in Sources */,
 				61052D182274F6C000024364 /* SwipeRecogViewController.swift in Sources */,
 				7832DDF1224828100032CE19 /* MathViewController.swift in Sources */,
 				78C3FEC6227516A200CC5C08 /* Math3ViewController.swift in Sources */,
