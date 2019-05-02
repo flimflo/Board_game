@@ -37,6 +37,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     @IBOutlet weak var blurVisualEffectView: UIVisualEffectView!
+    var diceView = UIImageView()
     
     // MARK: - Layout constraints
     
@@ -51,6 +52,8 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         mapScrollView.addSubview(contentView)
         displayPlayerName()
         blurVisualEffectView.isHidden = true
+        diceView.isHidden = true
+        view.addSubview(diceView)
     }
     
     override func viewDidLayoutSubviews() {
@@ -217,6 +220,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         //update view at previous cell
         updateButtonsViewAt(cellNumber: previousPosition)
         
+        
         //update view at new cell
         if nextPosition < cells.count  {
             updateButtonsViewAt(cellNumber: newPosition)
@@ -281,7 +285,8 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     func updateButtonsViewAt(cellNumber nextCell: Int) {
         
         let destination = cells[nextCell]
-        
+        print("Change")
+
         UIView.animate(withDuration: 0.5, animations: {
             let buttons = self.buttonsAtCell[destination]!
             
@@ -463,12 +468,13 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake, !gameOver, !disableMovePlayer {
+            
             disableMovePlayer = true
             dice.roll()
             animateDie()
             let player = players[turnNumber]
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.movePlayer(player: player, distance: self.dice.number, challengesActivated: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.1) {
+                self.movePlayer(player: player, distance: self.dice.number, challengesActivated: true)
             }
         }
     }
@@ -486,6 +492,8 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     // MARK: - Animation for dice roll
+    
+    
     func animateDie() {
         let width = self.view.bounds.width - getLeftSafeAreaInsets() - getRightSafeAreaInsets()
         let height = self.view.bounds.height
@@ -493,17 +501,17 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         let xPos = width/2 - side/2
         let yPos = height/2 - side/2
         print(width, height)
-        let imgDie = UIImageView(frame: CGRect(x: xPos, y: yPos, width: side, height: side))
-        view.addSubview(imgDie)
-        imgDie.image = dice.animatedDie
+        diceView.frame = CGRect(x: xPos, y: yPos, width: side, height: side)
+        diceView.isHidden = false
+        diceView.image = dice.animatedDie
         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-            imgDie.image = self.dice.curSide
+            self.diceView.image = self.dice.curSide
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
-            imgDie.removeFromSuperview()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.diceView.isHidden = true
         }
     }
 
