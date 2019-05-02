@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class MathViewController: UIViewController {
     
@@ -79,22 +80,35 @@ class MathViewController: UIViewController {
     }
     
     @IBAction func checar(_ sender: UIButton) {
+        var alertTitle: String!
+        var msg: String!
+        
         //checks if the text in the button matches the answer
-        if (sender.titleLabel?.text == String(answer)){
-            let alerta = UIAlertController(title: "Respuesta Correcta", message: "mensaje de prueba", preferredStyle: .alert)
-            let accion = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
-                let navigationVC = self.presentingViewController as! UINavigationController
-                let gameVC = navigationVC.topViewController as! GameViewController
-                gameVC.isChallengeCompleted(true)
-                self.dismiss(animated: true, completion: nil)
-            })
-            alerta.addAction(accion)
-            present(alerta, animated: true, completion: nil)
+        let wins = sender.titleLabel?.text == String(answer)
+        if (wins){
+            alertTitle = "¡Respuesta Correcta!"
+            msg = "¡Felicidades! Avanzas casillas"
+            let systemSoundID: SystemSoundID = 1331
+            AudioServicesPlaySystemSound (systemSoundID)
         }
             //shakes the button if theres no match
         else {
             sender.shake()
+            alertTitle = "¡Respuesta Incorrecta!"
+            msg = "¡Qué mal! Retrocedes casillas"
+            let systemSoundID: SystemSoundID = 1324
+            AudioServicesPlaySystemSound (systemSoundID)
         }
+        
+        let alerta = UIAlertController(title: alertTitle, message: msg, preferredStyle: .alert)
+        let accion = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
+            let navigationVC = self.presentingViewController as! UINavigationController
+            let gameVC = navigationVC.topViewController as! GameViewController
+            gameVC.isChallengeCompleted(wins)
+            self.dismiss(animated: true, completion: nil)
+        })
+        alerta.addAction(accion)
+        present(alerta, animated: true, completion: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
