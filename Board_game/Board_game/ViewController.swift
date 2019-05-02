@@ -199,6 +199,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         AppUtility.lockOrientation(.all)
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let navigationVC = segue.destination as! UINavigationController
+        let gameVC = navigationVC.topViewController as! GameViewController
+        gameVC.players = players
+    }
 }
 
 
