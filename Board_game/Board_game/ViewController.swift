@@ -37,6 +37,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(tap)
         self.registrarseParaNotificacionesDeTeclado()
         
+        AppUtility.lockOrientation(.portrait)
+        
+        
         //////////
         colbtColor[0].backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         colbtColor[1].backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
@@ -117,7 +120,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         switch Jugadoresact{
         case 1:
-            stackView.frame.size.height = 199
+            //stackView.frame.size.height = 199
             //constrain_altura.constant = 199
             stvJugadores[0].isHidden = false
             stvJugadores[1].isHidden = false
@@ -135,7 +138,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             coltfNombre[1].layer.borderColor = colbtColor![1].backgroundColor!.cgColor
             
         case 2:
-            stackView.frame.size.height = 272
+            //stackView.frame.size.height = 272
             //constrain_altura.constant = 272
             stvJugadores[0].isHidden = false
             stvJugadores[1].isHidden = false
@@ -151,7 +154,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             coltfNombre[2].layer.borderColor = colbtColor![2].backgroundColor!.cgColor
             
         case 3:
-            stackView.frame.size.height = 345
+            //stackView.frame.size.height = 345
             //constrain_altura.constant = 345
             stvJugadores[0].isHidden = false
             stvJugadores[1].isHidden = false
@@ -161,7 +164,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             coltfNombre[3].layer.borderColor = colbtColor![3].backgroundColor!.cgColor
             
         default:
-            stackView.frame.size.height = 126
+            //stackView.frame.size.height = 126
             //constrain_altura.constant = 126
             stvJugadores[0].isHidden = false
             stvJugadores[1].isHidden = true
@@ -188,6 +191,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     //////////////
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Don't forget to reset when view is being removed
+        AppUtility.lockOrientation(.all)
+    }
     
 }
 
