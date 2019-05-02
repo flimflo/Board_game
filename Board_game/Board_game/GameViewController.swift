@@ -466,9 +466,10 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             dice.roll()
             animateDie()
             let player = players[turnNumber]
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                self.movePlayer(player: player, distance: self.dice.number, challengesActivated: false)
-            }
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
+                self.movePlayer(player: player, distance: self.dice.number, challengesActivated: true)
+            })
+            
         }
     }
     
