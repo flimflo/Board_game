@@ -228,6 +228,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             }
         }
         
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if challengesActivated {
                 self.isAChallenge(cellNumber: newPosition)
@@ -466,10 +467,9 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             dice.roll()
             animateDie()
             let player = players[turnNumber]
-            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
-                self.movePlayer(player: player, distance: self.dice.number, challengesActivated: true)
-            })
-            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.movePlayer(player: player, distance: self.dice.number, challengesActivated: false)
+            }
         }
     }
     
@@ -497,14 +497,14 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(imgDie)
         imgDie.image = dice.animatedDie
         
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {_ in
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
             imgDie.image = self.dice.curSide
-        })
+        }
         
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: {_ in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
             imgDie.removeFromSuperview()
-        })
-        
+        }
     }
 
 }
