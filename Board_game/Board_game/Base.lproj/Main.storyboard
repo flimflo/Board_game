@@ -134,162 +134,6 @@
             </objects>
             <point key="canvasLocation" x="1559.2" y="143.3497536945813"/>
         </scene>
-        <!--Start View Controller-->
-        <scene sceneID="jZA-mR-SI3">
-            <objects>
-                <viewController id="ISn-Ol-Zsu" customClass="StartViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Kz2-2b-erf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Screen Shot 2019-03-23 at 11.10.49 AM" translatesAutoresizingMaskIntoConstraints="NO" id="fgj-Hz-STT">
-                                <rect key="frame" x="68" y="35" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m5q-iu-2fU">
-                                <rect key="frame" x="121" y="569" width="133" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="55"/>
-                                <color key="tintColor" red="0.35352784395217896" green="0.75169837474822998" blue="0.22165524959564209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Jugar"/>
-                                <connections>
-                                    <action selector="btJugar:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="jTd-LZ-hnD"/>
-                                    <segue destination="SZA-qm-Upf" kind="show" identifier="gameSegue" id="C2r-Hu-nwp"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="N2E-u8-e2P">
-                                <rect key="frame" x="44" y="183" width="286" height="140"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZNH-Vz-AmR">
-                                        <rect key="frame" x="0.0" y="0.0" width="286" height="60"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jugador 1" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mB0-0B-p3v">
-                                                <rect key="frame" x="8" y="8" width="200" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="js1-CF-veA">
-                                                <rect key="frame" x="223" y="2" width="55" height="55"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <connections>
-                                                    <action selector="BTChangecolor:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="CH8-vi-DvJ"/>
-                                                    <action selector="TFChangecolor:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="9yn-C3-Wdd"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0zu-yX-eEU">
-                                        <rect key="frame" x="0.0" y="70" width="286" height="0.0"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jugador 2" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1Yg-it-gWA">
-                                                <rect key="frame" x="8" y="8" width="200" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOE-Up-ZoC">
-                                                <rect key="frame" x="223" y="2" width="55" height="55"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <connections>
-                                                    <action selector="BTChangecolor:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="HbM-mB-WD3"/>
-                                                    <action selector="TFChangecolor:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="pur-J4-uXS"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9G5-Si-Pcs">
-                                        <rect key="frame" x="0.0" y="70" width="286" height="0.0"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jugador 3" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WKC-8J-0qm">
-                                                <rect key="frame" x="8" y="8" width="200" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXd-FW-qGT">
-                                                <rect key="frame" x="223" y="2" width="55" height="55"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <connections>
-                                                    <action selector="BTChangecolor:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="Mb1-Vl-i9d"/>
-                                                    <action selector="TFChangecolor:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="ewA-cA-nw1"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jD9-hd-nnD">
-                                        <rect key="frame" x="0.0" y="70" width="286" height="0.0"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Jugador 4" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="l7C-cm-GEf">
-                                                <rect key="frame" x="8" y="8" width="200" height="34"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odB-GV-UU3">
-                                                <rect key="frame" x="223" y="2" width="55" height="55"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <connections>
-                                                    <action selector="BTChangecolor:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="wdn-kL-cto"/>
-                                                    <action selector="TFChangecolor:" destination="ISn-Ol-Zsu" eventType="touchUpInside" id="4eu-F6-Uzl"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sEA-rt-D3h">
-                                        <rect key="frame" x="0.0" y="80" width="286" height="60"/>
-                                        <subviews>
-                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="nPz-kr-Yvj">
-                                                <rect key="frame" x="96" y="10.5" width="94" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" red="0.35352784395217896" green="0.75169837474822998" blue="0.22165524959564209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="stepperAgregar:" destination="ISn-Ol-Zsu" eventType="valueChanged" id="AqM-8m-JHA"/>
-                                                </connections>
-                                            </stepper>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="S3E-5v-hbH"/>
-                    </view>
-                    <connections>
-                        <outlet property="stackView" destination="N2E-u8-e2P" id="lJz-YF-oCK"/>
-                        <outletCollection property="stvJugadores" destination="ZNH-Vz-AmR" collectionClass="NSMutableArray" id="qS3-ui-28u"/>
-                        <outletCollection property="stvJugadores" destination="0zu-yX-eEU" collectionClass="NSMutableArray" id="fDs-VF-Quz"/>
-                        <outletCollection property="stvJugadores" destination="9G5-Si-Pcs" collectionClass="NSMutableArray" id="j0L-8N-xAy"/>
-                        <outletCollection property="stvJugadores" destination="jD9-hd-nnD" collectionClass="NSMutableArray" id="JuE-sx-uN7"/>
-                        <outletCollection property="coltfNombre" destination="mB0-0B-p3v" collectionClass="NSMutableArray" id="A1u-1m-NIy"/>
-                        <outletCollection property="coltfNombre" destination="1Yg-it-gWA" collectionClass="NSMutableArray" id="iaH-Wt-ZEP"/>
-                        <outletCollection property="coltfNombre" destination="WKC-8J-0qm" collectionClass="NSMutableArray" id="59M-F3-j0W"/>
-                        <outletCollection property="coltfNombre" destination="l7C-cm-GEf" collectionClass="NSMutableArray" id="Fl0-c2-fUA"/>
-                        <outletCollection property="colbtColor" destination="js1-CF-veA" collectionClass="NSMutableArray" id="qto-jR-NFl"/>
-                        <outletCollection property="colbtColor" destination="JOE-Up-ZoC" collectionClass="NSMutableArray" id="OMM-bb-kYT"/>
-                        <outletCollection property="colbtColor" destination="KXd-FW-qGT" collectionClass="NSMutableArray" id="1k0-dH-hQ8"/>
-                        <outletCollection property="colbtColor" destination="odB-GV-UU3" collectionClass="NSMutableArray" id="wcG-9n-Rl9"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dD5-cp-k1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-215.19999999999999" y="141.67916041979012"/>
-        </scene>
         <!--Math View Controller-->
         <scene sceneID="ygX-Xk-Emp">
             <objects>
@@ -671,7 +515,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="356" height="300"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Motion_Ex2_1" translatesAutoresizingMaskIntoConstraints="NO" id="mXo-Ya-gUi">
-                                                <rect key="frame" x="89" y="75" width="178.00000000000045" height="150"/>
+                                                <rect key="frame" x="89" y="75" width="178" height="150"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -734,7 +578,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="356" height="300"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swipe_1" translatesAutoresizingMaskIntoConstraints="NO" id="WFz-01-IdB">
-                                                <rect key="frame" x="89" y="75" width="178" height="150.00000000000045"/>
+                                                <rect key="frame" x="89" y="75" width="178" height="150"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -854,6 +698,7 @@
                                                 <state key="normal" title="Jugar"/>
                                                 <connections>
                                                     <action selector="btJugar:" destination="iS4-Vb-Nr1" eventType="touchUpInside" id="2Al-DJ-eM5"/>
+                                                    <segue destination="SZA-qm-Upf" kind="show" identifier="gameSegue" id="w4V-e4-eYN"/>
                                                 </connections>
                                             </button>
                                             <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LMg-Oi-O8c">
@@ -1060,7 +905,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTf-1j-IcV" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-215.82733812949641" y="-575.37688442211061"/>
+            <point key="canvasLocation" x="-215" y="143"/>
         </scene>
     </scenes>
     <resources>

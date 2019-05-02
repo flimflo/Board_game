@@ -185,7 +185,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         players.removeAll()
         
         for i in 0...Jugadoresact{
-            let tmpplayer = Player(name: coltfNombre[i].text!, color: colbtColor[i].backgroundColor!)
+            var nombre = coltfNombre[i].text!
+            if (nombre.isEmpty) {
+                nombre = "Jugador \(i+1)"
+            }
+            
+            let tmpplayer = Player(name: nombre, color: colbtColor[i].backgroundColor!)
             players.append(tmpplayer)
         }
     }
