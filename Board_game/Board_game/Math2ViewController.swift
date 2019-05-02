@@ -57,13 +57,11 @@ class Math2ViewController: UIViewController {
     
     @IBAction func checar(_ sender: UIButton) {
         var alertTitle: String!
-        var msg: String!
         
         //checks if the text in the button matches the answer
         let wins = sender.titleLabel?.text == sign
         if (wins){
             alertTitle = "¡Respuesta Correcta!"
-            msg = ""
             let systemSoundID: SystemSoundID = 1331
             AudioServicesPlaySystemSound (systemSoundID)
         }
@@ -71,12 +69,17 @@ class Math2ViewController: UIViewController {
         else {
             sender.shake()
             alertTitle = "¡Respuesta Incorrecta!"
-            msg = ""
             let systemSoundID: SystemSoundID = 1324
             AudioServicesPlaySystemSound (systemSoundID)
         }
         
-        let alerta = UIAlertController(title: alertTitle, message: msg, preferredStyle: .alert)
+        let alerta = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        //font for title text
+        let messageFont = [kCTFontAttributeName: UIFont.systemFont(ofSize: 40)]
+        let messageAttrString = NSMutableAttributedString(string: alertTitle, attributes: messageFont as [NSAttributedString.Key : Any])
+        alerta.setValue(messageAttrString, forKey: "attributedMessage")
+        
         let accion = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
             let navigationVC = self.presentingViewController as! UINavigationController
             let gameVC = navigationVC.topViewController as! GameViewController

@@ -41,22 +41,19 @@ class MotionEx1ViewController: UIViewController {
     @IBAction func Tap(_ sender: Any) {
         if(comenzargesto && barrera){
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MotionEx1ViewController.action), userInfo: nil, repeats: true)
-            Counter.isHidden = false
+            Counter.text = "3"
+            Counter.font = Counter.font.withSize(200)
         }
         barrera = false
-        Counter.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     @objc func action(){
-        
-        
         time -= 1
-        
-        Counter.font = Counter.font.withSize(200)
         Counter.text = String(time)
         
         if(time == 0 && comenzargesto){
-            time = 16
+            time = 15
+            Counter.text = String(time)
             lbBackground.isHidden = true
             imgBackground.isHidden = true
             comenzargesto = false
@@ -96,7 +93,7 @@ class MotionEx1ViewController: UIViewController {
         }
         
         if(completar){
-            respuesta = "Felicidades!!! Completaste el reto"
+            respuesta = "¡Completaste el reto!"
             let systemSoundID: SystemSoundID = 1331
             AudioServicesPlaySystemSound (systemSoundID)
         }else{
@@ -104,7 +101,13 @@ class MotionEx1ViewController: UIViewController {
             let systemSoundID: SystemSoundID = 1324
             AudioServicesPlaySystemSound (systemSoundID)
         }
-        let alerta = UIAlertController(title: respuesta, message: "mensaje de prueba", preferredStyle: .alert)
+        let alerta = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        //font for title text
+        let messageFont = [kCTFontAttributeName: UIFont.systemFont(ofSize: 40)]
+        let messageAttrString = NSMutableAttributedString(string: respuesta, attributes: messageFont as [NSAttributedString.Key : Any])
+        alerta.setValue(messageAttrString, forKey: "attributedMessage")
+        
         let accion = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
             let navigationVC = self.presentingViewController as! UINavigationController
             let gameVC = navigationVC.topViewController as! GameViewController
