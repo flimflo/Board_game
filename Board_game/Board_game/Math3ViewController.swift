@@ -79,19 +79,17 @@ class Math3ViewController: UIViewController {
     func checkOrder() {
         var color: UIColor!
         var alertTitle: String!
-        var msg: String!
+
         //checks order of the numbers
         let wins = type == "<" && ans[0] < ans[1] && ans[1] < ans[2] ||
                    type == ">" && ans[0] > ans[1] && ans[1] > ans[2]
         if (wins) {
             alertTitle = "¡Respuesta Correcta!"
-            msg = ""
             color = UIColor.init(red: 0.2, green: 0.6, blue: 0.01, alpha: 1.0)
         }
         else {
             color = .red
             alertTitle = "¡Respuesta Incorrecta!"
-            msg = ""
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: {_ in self.reset()})
         }
         
@@ -99,7 +97,13 @@ class Math3ViewController: UIViewController {
         top2.backgroundColor = color
         top3.backgroundColor = color
         
-        let alerta = UIAlertController(title: alertTitle, message: msg, preferredStyle: .alert)
+        let alerta = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        
+        //font for title text
+        let messageFont = [kCTFontAttributeName: UIFont.systemFont(ofSize: 40)]
+        let messageAttrString = NSMutableAttributedString(string: alertTitle, attributes: messageFont as [NSAttributedString.Key : Any])
+        alerta.setValue(messageAttrString, forKey: "attributedMessage")
+        
         let accion = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
             let navigationVC = self.presentingViewController as! UINavigationController
             let gameVC = navigationVC.topViewController as! GameViewController
