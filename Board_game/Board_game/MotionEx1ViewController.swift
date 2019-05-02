@@ -52,8 +52,7 @@ class MotionEx1ViewController: UIViewController {
         
         time -= 1
         
-        
-        
+        Counter.font = Counter.font.withSize(200)
         Counter.text = String(time)
         
         if(time == 0 && comenzargesto){

@@ -77,35 +77,45 @@ class Math3ViewController: UIViewController {
     }
     
     func checkOrder() {
-        if (type == "<" && ans[0] < ans[1] && ans[1] < ans[2] ||
-            type == ">" && ans[0] > ans[1] && ans[1] > ans[2]) {
-            //CODE FOR CORRECT ANSWER
-            let darkgreen = UIColor.init(red: 0.2, green: 0.6, blue: 0.01, alpha: 1.0)
-            top1.backgroundColor = darkgreen
-            top2.backgroundColor = darkgreen
-            top3.backgroundColor = darkgreen
-            
-            let alerta = UIAlertController(title: "Respuesta Correcta", message: "mensaje de prueba", preferredStyle: .alert)
-            let accion = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
-                let navigationVC = self.presentingViewController as! UINavigationController
-                let gameVC = navigationVC.topViewController as! GameViewController
-                gameVC.isChallengeCompleted(true)
-                self.dismiss(animated: true, completion: nil)
-            })
-            
-            alerta.addAction(accion)
-            
-            present(alerta, animated: true, completion: nil)
+        var color: UIColor!
+        var alertTitle: String!
+        var msg: String!
+        //checks order of the numbers
+        let wins = type == "<" && ans[0] < ans[1] && ans[1] < ans[2] ||
+                   type == ">" && ans[0] > ans[1] && ans[1] > ans[2]
+        if (wins) {
+            alertTitle = "¡Respuesta Correcta!"
+            msg = ""
+            color = UIColor.init(red: 0.2, green: 0.6, blue: 0.01, alpha: 1.0)
         }
         else {
-            
+            color = .red
+            alertTitle = "¡Respuesta Incorrecta!"
+            msg = ""
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false, block: {_ in self.reset()})
         }
+        
+        top1.backgroundColor = color
+        top2.backgroundColor = color
+        top3.backgroundColor = color
+        
+        let alerta = UIAlertController(title: alertTitle, message: msg, preferredStyle: .alert)
+        let accion = UIAlertAction(title: "Ok", style: .cancel, handler: {action in
+            let navigationVC = self.presentingViewController as! UINavigationController
+            let gameVC = navigationVC.topViewController as! GameViewController
+            gameVC.isChallengeCompleted(wins)
+            self.dismiss(animated: true, completion: nil)
+        })
+        
+        alerta.addAction(accion)
+        present(alerta, animated: true, completion: nil)
+
     }
     
     func reset() {
         viewContainer.shake()
         //regresar a las posiciones originales con animacion
+        let color = UIColor(red:0.08, green:0.47, blue:0.96, alpha:1.0)
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: {_ in
             UIView.animate(withDuration: 1.5) {
                 self.bt1.isHidden = false
@@ -117,6 +127,9 @@ class Math3ViewController: UIViewController {
                 self.top1.setTitle("", for: .normal)
                 self.top2.setTitle("", for: .normal)
                 self.top3.setTitle("", for: .normal)
+                self.bt1.backgroundColor = color
+                self.bt2.backgroundColor = color
+                self.bt3.backgroundColor = color
             }
         })
         
