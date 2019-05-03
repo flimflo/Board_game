@@ -47,7 +47,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //players.append(Player(name: "test", color: .blue))
         initAttributes()
         mapScrollView.addSubview(contentView)
         displayPlayerName()
@@ -118,6 +117,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         displayPlayerName()
     }
     
+    
     func displayPlayerName() {
         let player = players[turnNumber]
         let button = Button()
@@ -128,10 +128,17 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func incrementTurn() {
-        if turnNumber == players.count - 1 {
-            turnNumber = 0
+        
+        if players[turnNumber].getPosition() == cells.count - 1 {
+            gameOver = true
         } else {
-            turnNumber += 1
+            if turnNumber == players.count - 1 {
+                turnNumber = 0
+            } else {
+                turnNumber += 1
+            }
+            displayPlayerName()
+            disableMovePlayer = false
         }
     }
     
@@ -145,6 +152,8 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         } else if cells[cellNumber].backgroundColor == UIColor.green {
             isGreenChallenge = true
             self.present(vc!, animated: true, completion: nil)
+        } else {
+            incrementTurn()
         }
     }
     
@@ -162,6 +171,8 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
                 self.movePlayer(player: player, distance: -distance, challengesActivated: false)
             }
         }
+        
+        incrementTurn()
         
     }
     
@@ -232,19 +243,10 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             }
         }
         
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if challengesActivated {
+        if challengesActivated {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.isAChallenge(cellNumber: newPosition)
             }
-            self.disableMovePlayer = false
-        }
-        
-        if nextPosition == cells.count - 1 {
-            gameOver = true
-        } else {
-            incrementTurn()
-            displayPlayerName()
         }
     }
     
@@ -285,8 +287,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     func updateButtonsViewAt(cellNumber nextCell: Int) {
         
         let destination = cells[nextCell]
-        print("Change")
-
+        
         UIView.animate(withDuration: 0.5, animations: {
             let buttons = self.buttonsAtCell[destination]!
             
