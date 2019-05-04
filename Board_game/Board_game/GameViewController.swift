@@ -37,7 +37,13 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     @IBOutlet weak var blurVisualEffectView: UIVisualEffectView!
+    var inactivityTimer: Timer!
+    var inactivityTimerCounter = Int()
+    var imageShakeTimer: Timer!
+    var imageShakeTimerCounter = Int()
     var diceView = UIImageView()
+    let topLabel = TopLabel()
+    let initShakeImageView = UIImageView()
     
     // MARK: - Layout constraints
     
@@ -48,20 +54,33 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initAttributes()
-        mapScrollView.addSubview(contentView)
+        initViews()
         displayPlayerName()
-        blurVisualEffectView.isHidden = true
-        diceView.isHidden = true
-        view.addSubview(diceView)
     }
     
     override func viewDidLayoutSubviews() {
         setMap()
-        setMenuFrame()
+        updateViewsFrame()
+        if !isMapInitialized {
+            displayShakePopUp()
+        }
         isMapInitialized = true
     }
     
-    // MARK: - Game methods
+    override func viewDidAppear(_ animated: Bool) {
+        setInactivityTimer()
+    }
+    
+    // MARK: - Initialize attributes
+    func initViews() {
+        mapScrollView.addSubview(contentView)
+        topLabel.setAttributes()
+        blurVisualEffectView.isHidden = true
+        diceView.isHidden = true
+        view.addSubview(diceView)
+        view.addSubview(topLabel)
+        view.addSubview(initShakeImageView)
+    }
     
     func initAttributes() {
         
@@ -93,7 +112,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         
         //select cells with challenges
         let numberOfChallenges = totalCells / 2
-
+        
         for indexCell in 0...numberOfChallenges {
             let randomNumber = Int.random(in: 1...totalCells - 2)
             if indexCell % 2 == 0 {
@@ -117,7 +136,8 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         displayPlayerName()
     }
     
-    
+    // MARK: - Game methods
+
     func displayPlayerName() {
         let player = players[turnNumber]
         let button = Button()
@@ -141,7 +161,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             disableMovePlayer = false
         }
     }
-    
+
     func isAChallenge(cellNumber: Int) {
         let randomNumber = Int.random(in: 0..<storyboardIdentifiers.count)
         let vcIdentifier = storyboardIdentifiers[randomNumber]
@@ -159,6 +179,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     
     func isChallengeCompleted(_ completed: Bool) {
         
+        resetInactivityTimer()
         let player = players[turnNumber]
         let distance = Int.random(in: 1...6)
         
@@ -171,9 +192,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
                 self.movePlayer(player: player, distance: -distance, challengesActivated: false)
             }
         }
-        
         incrementTurn()
-        
     }
     
     //Removes a button from a cell's button list
@@ -248,6 +267,71 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
                 self.isAChallenge(cellNumber: newPosition)
             }
         }
+    }
+    
+    func updateViewsFrame() {
+        topLabel.frame = CGRect(x: view.frame.width / 8, y: view.frame.height / 6, width: view.frame.width * 0.8, height: view.frame.height * 0.2)
+        initShakeImageView.frame = CGRect(x: topLabel.frame.origin.x, y: topLabel.frame.origin.y + topLabel.frame.height + 20, width: topLabel.frame.width, height: view.frame.height * 0.5 )
+        menuView.frame.size = CGSize(width: view.frame.width * 0.8, height: view.frame.height * 0.6)
+        menuView.center = view.center
+    }
+    
+    //MARK: Pop Up methods
+    
+    func displayTopLabel(text: String, textColor: UIColor, backgroundColor: UIColor) {
+        topLabel.text = text
+        topLabel.layer.backgroundColor = backgroundColor.cgColor
+        topLabel.isHidden = false
+    }
+    
+    func hideTopLabel() {
+        topLabel.isHidden = true
+    }
+    
+    func displayShakePopUp() {
+        displayTopLabel(text: "Agite el dispositivo para lanzar el dado", textColor: .white, backgroundColor: .blue)
+        changeShakeImage()
+        setImageShakeTimer()
+        initShakeImageView .contentMode = .scaleAspectFit
+        initShakeImageView.isHidden = false
+        blurVisualEffectView.isHidden = false
+        blurVisualEffectView.alpha = 0.3
+    }
+    
+    func hideShakePopUp() {
+        blurVisualEffectView.alpha = 0
+        blurVisualEffectView.isHidden = true
+        hideTopLabel()
+        initShakeImageView.isHidden = true
+        blurVisualEffectView.alpha = 0
+        imageShakeTimer.invalidate()
+        imageShakeTimerCounter = 0
+    }
+    
+    func displayOptionsMenu() {
+        view.addSubview(menuView)
+        hideShakePopUp()
+        optionsButton.isEnabled = false
+        disableMovePlayer = true
+        blurVisualEffectView.isHidden = false
+        menuView.alpha = 0
+        setMenuButtonsAttributes()
+        UIView.animate(withDuration: 0.3) {
+            self.blurVisualEffectView.alpha = 1
+            self.menuView.alpha = 1
+        }
+        menuView.clipsToBounds = true
+        optionsButton.isEnabled = false
+    }
+    
+    func hideOptionsMenu() {
+        UIView.animate(withDuration: 0.3) {
+            self.menuView.alpha = 0
+            self.blurVisualEffectView.alpha = 0
+            self.menuView.removeFromSuperview()
+        }
+        optionsButton.isEnabled = true
+        disableMovePlayer = false
     }
     
     //MARK: Map view methods
@@ -385,18 +469,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: - Menu methods
     @IBAction func optionsButtonPressed(_ sender: Any) {
-        optionsButton.isEnabled = false
-        disableMovePlayer = true
-        blurVisualEffectView.isHidden = false
-        menuView.alpha = 0
-        view.addSubview(menuView)
-        setMenuButtonsAttributes()
-        UIView.animate(withDuration: 0.3) {
-            self.blurVisualEffectView.alpha = 1
-            self.menuView.alpha = 1
-        }
-        menuView.clipsToBounds = true
-        optionsButton.isEnabled = false
+        displayOptionsMenu()
     }
     
     func displayAlert(title: String, optionType: String) {
@@ -429,19 +502,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
-        UIView.animate(withDuration: 0.3) {
-            self.menuView.alpha = 0
-            self.blurVisualEffectView.alpha = 0
-            self.menuView.removeFromSuperview()
-        }
-        optionsButton.isEnabled = true
-        disableMovePlayer = false
-    }
-    
-    func setMenuFrame() {
-        menuView.frame.size = CGSize(width: view.frame.width * 0.8, height: view.frame.height * 0.6)
-        menuView.center = view.center
-        setMenuButtonsAttributes()
+        hideOptionsMenu()
     }
     
     func setMenuButtonsAttributes() {
@@ -469,7 +530,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake, !gameOver, !disableMovePlayer {
-            
+            resetInactivityTimer()
             disableMovePlayer = true
             dice.roll()
             animateDie()
@@ -491,9 +552,45 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         let offsetX = self.view.frame.width / 8
         mapScrollView.contentInset = UIEdgeInsets(top: offsetX, left: offsetY, bottom: offsetX, right: offsetY)
     }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        resetInactivityTimer()
+    }
+    
+    // MARK: - Timer
+    func setInactivityTimer() {
+        inactivityTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(incrementInactivityTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc func incrementInactivityTimer() {
+        inactivityTimerCounter += 1
+        
+        if inactivityTimerCounter == 25 {
+            displayShakePopUp()
+        }
+    }
+    
+    func resetInactivityTimer(){
+        inactivityTimerCounter = 0
+        hideShakePopUp()
+    }
+    
+    func setImageShakeTimer() {
+        imageShakeTimerCounter = 0
+        imageShakeTimer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(changeShakeImage), userInfo: nil, repeats: true)
+    }
+    
+    @objc func changeShakeImage() {
+        let imageName = ["Motion_Ex2_1", "Motion_Ex2_2"]
+        if imageShakeTimerCounter % 2 == 0 {
+            initShakeImageView.image = UIImage(named: imageName[0])
+        } else{
+            initShakeImageView.image = UIImage(named: imageName[1])
+        }
+        imageShakeTimerCounter += 1
+    }
     
     // MARK: - Animation for dice roll
-    
     
     func animateDie() {
         let width = self.view.bounds.width - getLeftSafeAreaInsets() - getRightSafeAreaInsets()
