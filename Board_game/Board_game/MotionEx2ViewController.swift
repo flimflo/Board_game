@@ -52,7 +52,7 @@ class MotionEx2ViewController: UIViewController {
         Counter.text = String(time)
         
         if(time == 0 && comenzargesto){
-            time = 15
+            time = 10
             Counter.text = String(time)
             lbBackground.isHidden = true
             imgBackground.isHidden = true
@@ -84,9 +84,11 @@ class MotionEx2ViewController: UIViewController {
     
     func Finalizar(){
         
+        motionManager.stopAccelerometerUpdates()
+        
         var respuesta = String()
         
-        if(veces > 18){
+        if(veces > 13){
             completar = true
         }else{
             completar = false
