@@ -40,6 +40,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var exitButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var optionsButton: UIBarButtonItem!
+    @IBOutlet weak var creditsButton: UIButton!
     @IBOutlet weak var blurVisualEffectView: UIVisualEffectView!
     var diceView = UIImageView()
     let topLabel = TopLabel()
@@ -513,6 +514,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         restartButton.setAttributes(Height: viewHeight)
         exitButton.setAttributes(Height: viewHeight)
         cancelButton.setAttributes(Height: viewHeight)
+        creditsButton.setAttributes(Height: viewHeight)
     }
     
     //MARK: Safe area insets methods

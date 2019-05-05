@@ -51,7 +51,7 @@ class SwipeRecogViewController: UIViewController {
         Counter.text = String(time)
         
         if(time == 0 && comenzargesto){
-            time = 15
+            time = 10
             Counter.text = String(time)
             tiempo_img.invalidate()
             imgBackground.image = mydirection[0].0
@@ -115,7 +115,7 @@ class SwipeRecogViewController: UIViewController {
         
         var respuesta = String()
         
-        if(veces > 12){
+        if(veces > 8){
             completar = true
         }else{
             completar = false
