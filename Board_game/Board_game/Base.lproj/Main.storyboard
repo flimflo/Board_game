@@ -653,6 +653,47 @@
             </objects>
             <point key="canvasLocation" x="2412" y="869"/>
         </scene>
+        <!--Tap Button Game View Controller-->
+        <scene sceneID="18X-zX-SU0">
+            <objects>
+                <viewController storyboardIdentifier="ButtonGame" id="FZs-vu-sjx" customClass="TapButtonGameViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zyY-tK-TNQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toca la pantalla para iniciar" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKt-0y-buE">
+                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="75"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qQ6-g0-6u8" appends="YES" id="Pqg-Gs-FMC"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="XKt-0y-buE" firstAttribute="bottom" secondItem="tKV-iz-Plc" secondAttribute="bottom" id="Enl-Zb-LZl"/>
+                            <constraint firstItem="XKt-0y-buE" firstAttribute="height" secondItem="zyY-tK-TNQ" secondAttribute="height" multiplier="0.7" id="F1f-eL-sOZ"/>
+                            <constraint firstItem="XKt-0y-buE" firstAttribute="leading" secondItem="tKV-iz-Plc" secondAttribute="leading" id="GWn-Zf-MVU"/>
+                            <constraint firstItem="tKV-iz-Plc" firstAttribute="trailing" secondItem="XKt-0y-buE" secondAttribute="trailing" id="ukq-eh-pBB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tKV-iz-Plc"/>
+                    </view>
+                    <connections>
+                        <outlet property="startLabel" destination="XKt-0y-buE" id="Due-yD-Vvp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6d-tf-2PD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qQ6-g0-6u8">
+                    <connections>
+                        <action selector="initGameTap:" destination="FZs-vu-sjx" id="ZGr-AU-zox"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="3439.1999999999998" y="865.81709145427294"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="jkw-6i-WXA">
             <objects>
