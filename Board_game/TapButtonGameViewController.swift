@@ -20,9 +20,35 @@ class TapButtonGameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initAttributes()
         view.addSubview(topLabel)
         view.addSubview(button)
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        if !gameStarted {
+            initAttributes()
+        }
+        topLabel.updateFrame()
+        topLabel.frame.origin.y = view.safeAreaInsets.top
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        AppUtility.lockOrientation(getCurrentOrientation())
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        AppUtility.lockOrientation(.all)
+    }
+    
+    func getCurrentOrientation() -> UIInterfaceOrientationMask {
+        
+        if UIDevice.current.orientation.isLandscape {
+            print("landscape")
+            return .landscape
+        }
+        print("portrait")
+        return .portrait
     }
     
     func initAttributes() {
@@ -39,7 +65,14 @@ class TapButtonGameViewController: UIViewController {
         
         tap = UITapGestureRecognizer(target: self, action: #selector(self.addPoint))
         button.addGestureRecognizer(tap)
-        let width = view.frame.width / 6
+        
+        var width = CGFloat()
+        
+        if view.frame.height >  view.frame.width {
+            width = view.frame.width / 6
+        } else {
+            width = view.frame.height / 6
+        }
         button.frame.size = CGSize(width: width, height: width)
         button.setAttributes(color: UIColor.cyan)
         button.isHidden = true
@@ -69,7 +102,6 @@ class TapButtonGameViewController: UIViewController {
     @objc func addPoint() {
         points += 1
         topLabel.text = "Puntos: \(points)"
-        print(points)
         displayButtonAtRandomPosition()
     }
     
@@ -133,10 +165,5 @@ class TapButtonGameViewController: UIViewController {
             startGame()
         }
         counter -= 1
-    }
-    
-    override func viewDidLayoutSubviews() {
-        topLabel.updateFrame()
-        topLabel.frame.origin.y = view.safeAreaInsets.top
     }
 }
