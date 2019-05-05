@@ -9,26 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    ///////////
+    
     var actualcolors = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1),#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1),#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)]
     var colordidchange = true
     var Jugadoresact = Int()
     var players = [Player]()
-    //////////////
-    
     
     @IBOutlet weak var scrollView: UIScrollView!
-    ////////////////
     @IBOutlet var stvJugadores: [UIView]!
-    
     @IBOutlet weak var stackView: UIStackView!
-    
     @IBOutlet var coltfNombre: [UITextField]!
-    
     @IBOutlet var colbtColor: [UIButton]!
-    ///////////
-    
     var activeField : UITextField!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        AppUtility.lockOrientation(.portrait)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +33,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(tap)
         self.registrarseParaNotificacionesDeTeclado()
         
-        AppUtility.lockOrientation(.portrait)
-        
-        
-        //////////
         colbtColor[0].backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         colbtColor[1].backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
         colbtColor[2].backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
@@ -49,7 +41,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             coltfNombre.layer.borderWidth = 3
             coltfNombre.layer.borderColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         }
-        //////////
     }
     
     func registrarseParaNotificacionesDeTeclado() {
@@ -69,26 +60,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
         scrollView.contentInset = contentInset
         scrollView.scrollIndicatorInsets = contentInset
-        
-        // If active text field is hidden by keyboard, scroll it so it's visible
-        // Your app might not need or want this behavior.
-        /*var aRect: CGRect = scrollView.frame
-         aRect.size.height -= kbSize.height
-         if !aRect.contains(activeField.frame.origin) {
-         scrollView.scrollRectToVisible(activeField.frame, animated: true)
-         }*/
     }
     
-    // Called when the UIKeyboardWillHideNotification is sent
+    //Se llama cuando se activa el listener de  UIKeyboardWillHideNotification
     @IBAction func keyboardWillBeHidden(aNotification : NSNotification) {
         let contentInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
     }
     
-    // OJO poner atención a este comentario
-    // Each text field in the interface sets the view controller as its delegate.
-    // Therefore, when a text field becomes active, it calls these methods.
+    //Cuando un text field se activa sellama a estos metodos
     func textFieldDidBeginEditing (_ textField : UITextField )
     {
         activeField = textField
@@ -98,7 +79,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     {
         activeField = nil
     }
-    //////////////
+
     @IBAction func BTChangecolor(_ sender: UIButton) {
         
         if(sender.backgroundColor != #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)){
@@ -120,8 +101,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         switch Jugadoresact{
         case 1:
-            //stackView.frame.size.height = 199
-            //constrain_altura.constant = 199
             stvJugadores[0].isHidden = false
             stvJugadores[1].isHidden = false
             stvJugadores[2].isHidden = true
@@ -138,8 +117,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             coltfNombre[1].layer.borderColor = colbtColor![1].backgroundColor!.cgColor
             
         case 2:
-            //stackView.frame.size.height = 272
-            //constrain_altura.constant = 272
             stvJugadores[0].isHidden = false
             stvJugadores[1].isHidden = false
             stvJugadores[2].isHidden = false
@@ -154,8 +131,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             coltfNombre[2].layer.borderColor = colbtColor![2].backgroundColor!.cgColor
             
         case 3:
-            //stackView.frame.size.height = 345
-            //constrain_altura.constant = 345
             stvJugadores[0].isHidden = false
             stvJugadores[1].isHidden = false
             stvJugadores[2].isHidden = false
@@ -164,8 +139,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             coltfNombre[3].layer.borderColor = colbtColor![3].backgroundColor!.cgColor
             
         default:
-            //stackView.frame.size.height = 126
-            //constrain_altura.constant = 126
             stvJugadores[0].isHidden = false
             stvJugadores[1].isHidden = true
             stvJugadores[2].isHidden = true
@@ -195,8 +168,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //////////////
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -211,6 +182,3 @@ class ViewController: UIViewController, UITextFieldDelegate {
         gameVC.players = players
     }
 }
-
-
-

@@ -55,7 +55,6 @@ class MotionEx2ViewController: UIViewController {
             time = 10
             Counter.text = String(time)
             lbBackground.isHidden = true
-            imgBackground.isHidden = true
             comenzargesto = false
         }else if(time == 0){
             Counter.isHidden = true
@@ -74,7 +73,6 @@ class MotionEx2ViewController: UIViewController {
                     self.veces += 1
                     self.viewController.backgroundColor = #colorLiteral(red: 0.353527844, green: 0.7516983747, blue: 0.2216552496, alpha: 1)
                     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                    
                 }else{
                     self.viewController.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                 }
@@ -105,7 +103,7 @@ class MotionEx2ViewController: UIViewController {
         }
         let alerta = UIAlertController(title: "", message: "", preferredStyle: .alert)
         
-        //font for title text
+        ///Font para el texto del titulo
         let messageFont = [kCTFontAttributeName: UIFont.systemFont(ofSize: 40)]
         let messageAttrString = NSMutableAttributedString(string: respuesta, attributes: messageFont as [NSAttributedString.Key : Any])
         alerta.setValue(messageAttrString, forKey: "attributedMessage")
@@ -121,7 +119,6 @@ class MotionEx2ViewController: UIViewController {
     }
     
     @objc func Rotar_img(){
-        
         imgBackground.image = arrimg[index_img]
         index_img += 1
         if(index_img == 2){
@@ -147,4 +144,3 @@ class MotionEx2ViewController: UIViewController {
      */
     
 }
-

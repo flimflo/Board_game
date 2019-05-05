@@ -64,7 +64,6 @@ class SwipeRecogViewController: UIViewController {
             Finalizar()
             time = -1 //pausar
             lbBackground.isHidden = true
-            imgBackground.isHidden = true
         }
     }
     
@@ -132,7 +131,7 @@ class SwipeRecogViewController: UIViewController {
         }
         let alerta = UIAlertController(title: "", message: "", preferredStyle: .alert)
         
-        //font for title text
+        //Font para el texto del titulo
         let messageFont = [kCTFontAttributeName: UIFont.systemFont(ofSize: 40)]
         let messageAttrString = NSMutableAttributedString(string: respuesta, attributes: messageFont as [NSAttributedString.Key : Any])
         alerta.setValue(messageAttrString, forKey: "attributedMessage")
@@ -148,7 +147,6 @@ class SwipeRecogViewController: UIViewController {
     }
     
     @objc func Rotar_img(){
-        
         imgBackground.image = arrimg[index_img]
         index_img += 1
         if(index_img == 4){
@@ -173,4 +171,3 @@ class SwipeRecogViewController: UIViewController {
      }
      */
 }
-
