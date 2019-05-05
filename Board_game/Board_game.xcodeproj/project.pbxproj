@@ -24,6 +24,7 @@
 		CE3DFF062268147800A3137A /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DFF052268147800A3137A /* Cell.swift */; };
 		CE5B2DDF22469E6300348AEE /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B2DDE22469E6300348AEE /* Player.swift */; };
 		CE5B2DE12246AE8A00348AEE /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B2DE02246AE8A00348AEE /* Game.swift */; };
+		CE8A01E1227D41EE006C9C71 /* TapButtonGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A01E0227D41EE006C9C71 /* TapButtonGameViewController.swift */; };
 		CEEC463E227CB5780032F0EB /* TopLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEC463D227CB5780032F0EB /* TopLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		CE3DFF052268147800A3137A /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		CE5B2DDE22469E6300348AEE /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CE5B2DE02246AE8A00348AEE /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		CE8A01E0227D41EE006C9C71 /* TapButtonGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TapButtonGameViewController.swift; path = ../TapButtonGameViewController.swift; sourceTree = "<group>"; };
 		CEEC463D227CB5780032F0EB /* TopLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,10 +90,11 @@
 				CE3DFF052268147800A3137A /* Cell.swift */,
 				CEEC463D227CB5780032F0EB /* TopLabel.swift */,
 				CE3DFF032267DCD500A3137A /* Button.swift */,
-				6126337A22469B0800164E07 /* Main.storyboard */,
 				610224BD227B3B3B00C3CADE /* ViewController.swift */,
-				61052D172274F6C000024364 /* SwipeRecogViewController.swift */,
+				6126337A22469B0800164E07 /* Main.storyboard */,
+				CE8A01E0227D41EE006C9C71 /* TapButtonGameViewController.swift */,
 				61052D132274E5BF00024364 /* MotionEx1ViewController.swift */,
+				61052D172274F6C000024364 /* SwipeRecogViewController.swift */,
 				61052D152274F38300024364 /* MotionEx2ViewController.swift */,
 				7832DDF0224828100032CE19 /* MathViewController.swift */,
 				78C3FEC3227515F600CC5C08 /* Math2ViewController.swift */,
@@ -176,6 +179,7 @@
 			files = (
 				610224BE227B3B3B00C3CADE /* ViewController.swift in Sources */,
 				61052D182274F6C000024364 /* SwipeRecogViewController.swift in Sources */,
+				CE8A01E1227D41EE006C9C71 /* TapButtonGameViewController.swift in Sources */,
 				7832DDF1224828100032CE19 /* MathViewController.swift in Sources */,
 				78C3FEC6227516A200CC5C08 /* Math3ViewController.swift in Sources */,
 				6126337922469B0800164E07 /* GameViewController.swift in Sources */,

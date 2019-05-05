@@ -24,8 +24,12 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     var turnNumber = Int()
     var isGreenChallenge = Bool()
     var alert = UIAlertController()
-    var storyboardIdentifiers = ["Motion1", "Motion2", "Math1", "Math2", "Math3", "Swipe1"]
+    var storyboardIdentifiers = ["Motion1", "Motion2", "Math1", "Math2", "Math3", "Swipe1", "ButtonGame"]
     var disableMovePlayer = false
+    var inactivityTimer: Timer!
+    var inactivityTimerCounter = Int()
+    var imageShakeTimer: Timer!
+    var imageShakeTimerCounter = Int()
     
     // MARK: - Views
     
@@ -38,10 +42,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var optionsButton: UIBarButtonItem!
     @IBOutlet weak var creditsButton: UIButton!
     @IBOutlet weak var blurVisualEffectView: UIVisualEffectView!
-    var inactivityTimer: Timer!
-    var inactivityTimerCounter = Int()
-    var imageShakeTimer: Timer!
-    var imageShakeTimerCounter = Int()
     var diceView = UIImageView()
     let topLabel = TopLabel()
     let initShakeImageView = UIImageView()
@@ -76,6 +76,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     func initViews() {
         mapScrollView.addSubview(contentView)
         topLabel.setAttributes()
+        topLabel.isHidden = true
         blurVisualEffectView.isHidden = true
         diceView.isHidden = true
         view.addSubview(diceView)
@@ -152,6 +153,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         
         if players[turnNumber].getPosition() == cells.count - 1 {
             gameOver = true
+            inactivityTimer.invalidate()
         } else {
             if turnNumber == players.count - 1 {
                 turnNumber = 0
@@ -169,6 +171,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: vcIdentifier)
         if cells[cellNumber].backgroundColor == UIColor.red {
             isGreenChallenge = false
+            
             self.present(vc!, animated: true, completion: nil)
         } else if cells[cellNumber].backgroundColor == UIColor.green {
             isGreenChallenge = true
@@ -271,7 +274,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func updateViewsFrame() {
-        topLabel.frame = CGRect(x: view.frame.width / 8, y: view.frame.height / 6, width: view.frame.width * 0.8, height: view.frame.height * 0.2)
+        topLabel.updateFrame()
         initShakeImageView.frame = CGRect(x: topLabel.frame.origin.x, y: topLabel.frame.origin.y + topLabel.frame.height + 20, width: topLabel.frame.width, height: view.frame.height * 0.5 )
         menuView.frame.size = CGSize(width: view.frame.width * 0.8, height: view.frame.height * 0.6)
         menuView.center = view.center
