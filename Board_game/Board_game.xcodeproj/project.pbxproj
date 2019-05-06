@@ -19,6 +19,7 @@
 		7832DDF1224828100032CE19 /* MathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7832DDF0224828100032CE19 /* MathViewController.swift */; };
 		7847D7C42246A7BF00199B5C /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7847D7C32246A7BF00199B5C /* Dice.swift */; };
 		787FEBE6227FE722003DFBAA /* SAConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787FEBE5227FE722003DFBAA /* SAConfettiView.swift */; };
+		788B741022808D6A00379D8C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788B740F22808D6A00379D8C /* Extensions.swift */; };
 		78C3FEC4227515F600CC5C08 /* Math2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C3FEC3227515F600CC5C08 /* Math2ViewController.swift */; };
 		78C3FEC6227516A200CC5C08 /* Math3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C3FEC5227516A200CC5C08 /* Math3ViewController.swift */; };
 		CE3DFF042267DCD500A3137A /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DFF032267DCD500A3137A /* Button.swift */; };
@@ -44,6 +45,7 @@
 		7832DDF0224828100032CE19 /* MathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathViewController.swift; sourceTree = "<group>"; };
 		7847D7C32246A7BF00199B5C /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		787FEBE5227FE722003DFBAA /* SAConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SAConfettiView.swift; sourceTree = "<group>"; };
+		788B740F22808D6A00379D8C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		78C3FEC3227515F600CC5C08 /* Math2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math2ViewController.swift; sourceTree = "<group>"; };
 		78C3FEC5227516A200CC5C08 /* Math3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math3ViewController.swift; sourceTree = "<group>"; };
 		CE3DFF032267DCD500A3137A /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				CE3DFF052268147800A3137A /* Cell.swift */,
 				CEEC463D227CB5780032F0EB /* TopLabel.swift */,
 				CE3DFF032267DCD500A3137A /* Button.swift */,
+				788B740F22808D6A00379D8C /* Extensions.swift */,
 				610224BD227B3B3B00C3CADE /* ViewController.swift */,
 				6126337A22469B0800164E07 /* Main.storyboard */,
 				787FEBE5227FE722003DFBAA /* SAConfettiView.swift */,
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				610224BE227B3B3B00C3CADE /* ViewController.swift in Sources */,
+				788B741022808D6A00379D8C /* Extensions.swift in Sources */,
 				61052D182274F6C000024364 /* SwipeRecogViewController.swift in Sources */,
 				CE8A01E1227D41EE006C9C71 /* TapButtonGameViewController.swift in Sources */,
 				7832DDF1224828100032CE19 /* MathViewController.swift in Sources */,

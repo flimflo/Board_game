@@ -21,8 +21,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     var disableMovePlayer = false
     var inactivityTimer: Timer!
     var inactivityTimerCounter = Int()
-    var imageShakeTimer: Timer?
-    var imageShakeTimerCounter = Int()
     
     // MARK: - Views
     
@@ -51,7 +49,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         initAttributes()
         initViews()
         displayPlayerName()
-        setInactivityTimer()
+        inactivityTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(incrementInactivityTimer), userInfo: nil, repeats: true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,6 +67,10 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         mapScrollView.addSubview(contentView)
         topLabel.setAttributes()
         confettiView.frame = view.bounds
+        initShakeImageView .contentMode = .scaleAspectFit
+        let shakeAnimation = UIImage.animatedImage(with:
+            [UIImage(named: "Motion_Ex2_1")!, UIImage(named: "Motion_Ex2_2")!], duration: 1.2)
+        initShakeImageView.image = shakeAnimation
         
         topLabel.isHidden = true
         blurVisualEffectView.isHidden = true
@@ -147,7 +149,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func incrementTurn() {
-        
         if players[turnNumber].getPosition() == cells.count - 1 {
             gameOver = true
             inactivityTimer.invalidate()
@@ -329,9 +330,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     
     func displayShakePopUp() {
         displayTopLabel(text: "Agite el dispositivo para lanzar el dado", textColor: .white, backgroundColor: .blue)
-        changeShakeImage()
-        setImageShakeTimer()
-        initShakeImageView .contentMode = .scaleAspectFit
         initShakeImageView.isHidden = false
         blurVisualEffectView.isHidden = false
         blurVisualEffectView.alpha = 0.3
@@ -343,8 +341,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         hideTopLabel()
         initShakeImageView.isHidden = true
         blurVisualEffectView.alpha = 0
-        imageShakeTimer?.invalidate()
-        imageShakeTimerCounter = 0
     }
     
     func displayOptionsMenu() {
@@ -608,11 +604,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         resetInactivityTimer()
     }
     
-    // MARK: - Timer
-    func setInactivityTimer() {
-        inactivityTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(incrementInactivityTimer), userInfo: nil, repeats: true)
-    }
-    
+    // MARK: - Inactivity Timer
     @objc func incrementInactivityTimer() {
         if !disableMovePlayer {
             inactivityTimerCounter += 1
@@ -627,23 +619,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         hideShakePopUp()
     }
     
-    func setImageShakeTimer() {
-        imageShakeTimerCounter = 0
-        imageShakeTimer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(changeShakeImage), userInfo: nil, repeats: true)
-    }
-    
-    @objc func changeShakeImage() {
-        let imageName = ["Motion_Ex2_1", "Motion_Ex2_2"]
-        if imageShakeTimerCounter % 2 == 0 {
-            initShakeImageView.image = UIImage(named: imageName[0])
-        } else{
-            initShakeImageView.image = UIImage(named: imageName[1])
-        }
-        imageShakeTimerCounter += 1
-    }
-    
     // MARK: - Animation for dice roll
-    
     func animateDie() {
         let width = self.view.bounds.width - getLeftSafeAreaInsets() - getRightSafeAreaInsets()
         let height = self.view.bounds.height
@@ -665,23 +641,4 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-}
-
-extension UIButton {
-    func setAttributes(Height: CGFloat) {
-        self.layer.cornerRadius = 10.0
-        self.layer.borderColor = UIColor.black.cgColor
-        self.layer.borderWidth = 3.0
-        self.titleLabel?.font = self.titleLabel?.font.withSize(getFontSize(height: Height))
-        self.titleLabel?.adjustsFontSizeToFitWidth = true
-    }
-    
-    private func getFontSize(height: CGFloat) -> CGFloat {
-        if height < 250 {
-            return 30
-        } else if height < 500 {
-            return 45
-        }
-        return 70
-    }
 }
