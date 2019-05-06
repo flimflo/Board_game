@@ -42,12 +42,9 @@ class TapButtonGameViewController: UIViewController {
     }
     
     func getCurrentOrientation() -> UIInterfaceOrientationMask {
-        
         if UIDevice.current.orientation.isLandscape {
-            print("landscape")
             return .landscape
         }
-        print("portrait")
         return .portrait
     }
     

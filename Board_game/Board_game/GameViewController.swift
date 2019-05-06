@@ -28,7 +28,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     var disableMovePlayer = false
     var inactivityTimer: Timer!
     var inactivityTimerCounter = Int()
-    var imageShakeTimer: Timer!
+    var imageShakeTimer: Timer?
     var imageShakeTimerCounter = Int()
     
     // MARK: - Views
@@ -57,19 +57,17 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         initAttributes()
         initViews()
         displayPlayerName()
+        setInactivityTimer()
     }
     
     override func viewDidLayoutSubviews() {
         setMap()
         updateViewsFrame()
+        resetInactivityTimer()
         if !isMapInitialized {
             displayShakePopUp()
         }
         isMapInitialized = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        setInactivityTimer()
     }
     
     // MARK: - Initialize attributes
@@ -171,7 +169,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: vcIdentifier)
         if cells[cellNumber].backgroundColor == UIColor.red {
             isGreenChallenge = false
-            
             self.present(vc!, animated: true, completion: nil)
         } else if cells[cellNumber].backgroundColor == UIColor.green {
             isGreenChallenge = true
@@ -308,7 +305,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         hideTopLabel()
         initShakeImageView.isHidden = true
         blurVisualEffectView.alpha = 0
-        imageShakeTimer.invalidate()
+        imageShakeTimer?.invalidate()
         imageShakeTimerCounter = 0
     }
     
@@ -336,6 +333,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         }
         optionsButton.isEnabled = true
         disableMovePlayer = false
+        resetInactivityTimer()
     }
     
     //MARK: Map view methods
@@ -568,10 +566,11 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func incrementInactivityTimer() {
-        inactivityTimerCounter += 1
-        
-        if inactivityTimerCounter == 25 {
-            displayShakePopUp()
+        if !disableMovePlayer {
+            inactivityTimerCounter += 1
+            if inactivityTimerCounter == 20 {
+                displayShakePopUp()
+            }
         }
     }
     
