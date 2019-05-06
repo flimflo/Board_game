@@ -338,12 +338,18 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func hideShakePopUp() {
-        blurVisualEffectView.alpha = 0
-        blurVisualEffectView.isHidden = true
+        if !disableMovePlayer {
+            blurVisualEffectView.isHidden = true
+        }
         hideTopLabel()
         initShakeImageView.isHidden = true
-        blurVisualEffectView.alpha = 0
     }
+    
+    @IBAction func hideShakePopUpTap(_ sender: Any) {
+        hideShakePopUp()
+        resetInactivityTimer()
+    }
+    
     
     func displayOptionsMenu() {
         view.addSubview(menuView)
@@ -353,6 +359,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         blurVisualEffectView.isHidden = false
         menuView.alpha = 0
         setMenuButtonsAttributes()
+        
         UIView.animate(withDuration: 0.3) {
             self.blurVisualEffectView.alpha = 1
             self.menuView.alpha = 1
@@ -367,6 +374,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             self.blurVisualEffectView.alpha = 0
             self.menuView.removeFromSuperview()
         }
+        self.blurVisualEffectView.isHidden = true
         optionsButton.isEnabled = true
         disableMovePlayer = false
         resetInactivityTimer()
