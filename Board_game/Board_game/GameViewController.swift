@@ -148,8 +148,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     
     func incrementTurn() {
         
-        //if players[turnNumber].getPosition() == cells.count - 1 {
-        if true {
+        if players[turnNumber].getPosition() == cells.count - 1 {
             gameOver = true
             inactivityTimer.invalidate()
             displayWinner()
