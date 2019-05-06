@@ -1,11 +1,3 @@
-//
-//  MotionEx1ViewController.swift
-//  Board_game
-//
-//  Created by Fernando Limón Flores on 4/4/19.
-//  Copyright © 2019 Fernando Limón Flores. All rights reserved.
-//
-
 import UIKit
 import CoreMotion
 import AudioToolbox

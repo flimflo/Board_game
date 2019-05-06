@@ -1,11 +1,3 @@
-//
-//  MathViewController.swift
-//  Board_game
-//
-//  Created by Juan De Leon on 3/24/19.
-//  Copyright © 2019 Fernando Limón Flores. All rights reserved.
-//
-
 import UIKit
 import AudioToolbox
 

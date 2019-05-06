@@ -762,7 +762,7 @@ Juan Carlos De León</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3439.1999999999998" y="865.81709145427294"/>
+            <point key="canvasLocation" x="1558" y="1588"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jkw-6i-WXA">
@@ -782,10 +782,10 @@ Juan Carlos De León</string>
             </objects>
             <point key="canvasLocation" x="616.79999999999995" y="143.3497536945813"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="GIz-fe-qyu">
             <objects>
-                <viewController id="iS4-Vb-Nr1" customClass="ViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iS4-Vb-Nr1" customClass="MenuViewController" customModule="Board_game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QBT-tf-utC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
