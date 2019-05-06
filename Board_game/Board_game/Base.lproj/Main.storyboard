@@ -48,6 +48,7 @@
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SFo-9y-3aB" secondAttribute="trailing" id="3TP-DH-OVp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="SFo-9y-3aB" secondAttribute="top" id="7mW-WU-xMw"/>
@@ -62,6 +63,9 @@
                             <constraint firstItem="SFo-9y-3aB" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="wkO-P7-ZDu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="4QR-Hl-qXR" appends="YES" id="L0z-xG-nHE"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="niz-Nh-er3">
                         <barButtonItem key="rightBarButtonItem" title="Opciones" id="Vtg-rn-iRs">
@@ -93,7 +97,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuq-da-QId">
                                     <rect key="frame" x="0.0" y="0.0" width="381" height="71"/>
-                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title="Reiniciar juego">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
@@ -103,7 +107,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7s-VI-IhN">
                                     <rect key="frame" x="0.0" y="103" width="381" height="71"/>
-                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title="Salir del juego">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
@@ -113,12 +117,12 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CfG-IQ-rBt">
                                     <rect key="frame" x="0.0" y="206" width="381" height="71"/>
-                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <state key="normal" title="Cancelar">
+                                    <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <state key="normal" title="Volver">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t6V-0i-Nwp"/>
+                                        <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3N4-GN-alZ"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpW-EK-Vmw">
@@ -128,7 +132,6 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p6s-E5-YyO"/>
                                         <segue destination="iNS-Pg-j5i" kind="show" id="cYy-er-jTf"/>
                                     </connections>
                                 </button>
@@ -143,6 +146,7 @@
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="3lJ-Rh-fVs"/>
                 </view>
+                <tapGestureRecognizer id="4QR-Hl-qXR"/>
             </objects>
             <point key="canvasLocation" x="1559.2" y="143.3497536945813"/>
         </scene>
@@ -163,8 +167,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" minimumScaleFactor="0.20000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-zy-kzD">
-                                <rect key="frame" x="0.0" y="383.5" width="375" height="189"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" minimumScaleFactor="0.20000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-zy-kzD">
+                                <rect key="frame" x="0.0" y="386.5" width="375" height="189"/>
                                 <string key="text">Pedro Ontiveros Presa
 Fernando Limón Flores
 Juan Carlos De León</string>
@@ -586,7 +590,7 @@ Juan Carlos De León</string>
                                         <rect key="frame" x="0.0" y="0.0" width="356" height="300"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Motion_Ex2_1" translatesAutoresizingMaskIntoConstraints="NO" id="mXo-Ya-gUi">
-                                                <rect key="frame" x="89" y="75" width="178" height="150"/>
+                                                <rect key="frame" x="89" y="75" width="178" height="150.00000000000011"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -650,7 +654,7 @@ Juan Carlos De León</string>
                                         <rect key="frame" x="0.0" y="0.0" width="356" height="300"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swipe_1" translatesAutoresizingMaskIntoConstraints="NO" id="WFz-01-IdB">
-                                                <rect key="frame" x="89" y="75" width="178" height="150"/>
+                                                <rect key="frame" x="89" y="75" width="178" height="150.00000000000045"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1026,7 +1030,7 @@ Juan Carlos De León</string>
         <image name="Logo" width="400" height="225"/>
         <image name="Logo2" width="400" height="225"/>
         <image name="Motion_Ex1_1" width="1910" height="2456"/>
-        <image name="Motion_Ex2_1" width="3053" height="2097"/>
+        <image name="Motion_Ex2_1" width="692" height="503"/>
         <image name="Swipe_1" width="1152" height="1753"/>
     </resources>
 </document>

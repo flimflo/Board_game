@@ -75,6 +75,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         topLabel.isHidden = true
         blurVisualEffectView.isHidden = true
         diceView.isHidden = true
+        
         confettiView.isHidden = true
         
         view.addSubview(confettiView)
@@ -91,6 +92,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         cells.removeAll()
         isMapInitialized = false
         gameOver = false
+        confettiView.isHidden = true
         turnNumber = 0
         
         for cell in contentView.subviews {
@@ -601,7 +603,9 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        resetInactivityTimer()
+        if !disableMovePlayer {
+            resetInactivityTimer()
+        }
     }
     
     // MARK: - Inactivity Timer

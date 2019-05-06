@@ -91,6 +91,10 @@ class TapButtonGameViewController: UIViewController {
     @objc func addPoint() {
         points += 1
         topLabel.text = "Puntos: \(points)"
+        if points == 10 {
+            topLabel.layer.backgroundColor = UIColor.green.cgColor
+            topLabel.textColor = UIColor.black
+        }
         displayButtonAtRandomPosition()
     }
     
@@ -109,7 +113,7 @@ class TapButtonGameViewController: UIViewController {
         var wins = false
         var alertTitle = String()
         
-        if points >= 8 {
+        if points >= 10 {
             wins = true
             alertTitle = "¡Completaste el reto!"
         } else {
