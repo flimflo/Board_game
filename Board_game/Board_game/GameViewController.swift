@@ -1,12 +1,5 @@
-//
-//  ViewController.swift
-//  Board_game
-//
-//  Created by Fernando Limón Flores on 3/23/19.
-//  Copyright © 2019 Fernando Limón Flores. All rights reserved.
-//
-
 import UIKit
+import AudioToolbox
 
 class GameViewController: UIViewController, UIScrollViewDelegate {
     
@@ -168,11 +161,21 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         let vcIdentifier = storyboardIdentifiers[randomNumber]
         let vc = self.storyboard?.instantiateViewController(withIdentifier: vcIdentifier)
         if cells[cellNumber].backgroundColor == UIColor.red {
-            isGreenChallenge = false
-            self.present(vc!, animated: true, completion: nil)
+            
+            displayTopLabel(text: "Casilla roja, supera el reto para no retroceder", textColor: .white, backgroundColor: #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1))
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
+                self.hideTopLabel()
+                self.isGreenChallenge = false
+                self.present(vc!, animated: true, completion: nil)
+            }
         } else if cells[cellNumber].backgroundColor == UIColor.green {
-            isGreenChallenge = true
-            self.present(vc!, animated: true, completion: nil)
+            displayTopLabel(text: "Casilla verde, supera el reto para avanzar", textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), backgroundColor: #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
+                self.hideTopLabel()
+                self.isGreenChallenge = true
+                self.present(vc!, animated: true, completion: nil)
+            }
         } else {
             incrementTurn()
         }
@@ -185,12 +188,37 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         let distance = Int.random(in: 1...6)
         
         if completed, isGreenChallenge {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            var plural = String()
+            if distance == 1{
+                plural = "casilla"
+            }else{
+                plural = "casillas"
+            }
+            displayTopLabel(text: "🎊Felicidades🎊 Avanza: \(distance) " + plural, textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), backgroundColor: #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.hideTopLabel()
                 self.movePlayer(player: player, distance: distance, challengesActivated: false)
             }
+        } else if !completed, isGreenChallenge{
+            displayTopLabel(text: "Buen intento 😐", textColor: .white, backgroundColor: #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.hideTopLabel()
+            }
         } else if !completed, !isGreenChallenge {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            var plural = String()
+            if distance == 1{
+                plural = "casilla"
+            }else{
+                plural = "casillas"
+            }
+            displayTopLabel(text: "Perdiste el reto 😕 Retrocede: \(distance) " + plural, textColor: .white, backgroundColor: #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.movePlayer(player: player, distance: -distance, challengesActivated: false)
+            }
+        } else {
+            displayTopLabel(text: "Bien hecho 👍 mantienes tu posición", textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), backgroundColor: #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.hideTopLabel()
             }
         }
         incrementTurn()
@@ -282,6 +310,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     func displayTopLabel(text: String, textColor: UIColor, backgroundColor: UIColor) {
         topLabel.text = text
         topLabel.layer.backgroundColor = backgroundColor.cgColor
+        topLabel.textColor = textColor
         topLabel.isHidden = false
     }
     
@@ -537,6 +566,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             disableMovePlayer = true
             dice.roll()
             animateDie()
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             let player = players[turnNumber]
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.1) {
                 self.movePlayer(player: player, distance: self.dice.number, challengesActivated: true)

@@ -1,16 +1,8 @@
-//
-//  ViewController.swift
-//  mueveTextoBajoTecladoA17
-//
-//  Created by Yolanda Martinez on 10/29/17.
-//  Copyright © 2017 com.itesm. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class MenuViewController: UIViewController, UITextFieldDelegate {
     
-    var actualcolors = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1),#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1),#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)]
+    var actualcolors = [#colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1),#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1),#colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1),#colorLiteral(red: 1, green: 0.2156862745, blue: 0.3725490196, alpha: 1),#colorLiteral(red: 0.5810584426, green: 0.1285524964, blue: 0.5745313764, alpha: 1),#colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)]
     var colordidchange = true
     var Jugadoresact = Int()
     var players = [Player]()
@@ -24,6 +16,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         AppUtility.lockOrientation(.portrait)
+        for button in colbtColor{
+            button.layer.cornerRadius = button.frame.width / 2
+        }
     }
     
     override func viewDidLoad() {

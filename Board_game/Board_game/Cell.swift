@@ -1,11 +1,3 @@
-//
-//  Cell.swift
-//  Board_game
-//
-//  Created by PO on 4/17/19.
-//  Copyright © 2019 Fernando Limón Flores. All rights reserved.
-//
-
 import UIKit
 
 class Cell: UIView {

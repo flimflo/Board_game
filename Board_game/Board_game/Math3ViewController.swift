@@ -1,11 +1,3 @@
-//
-//  Math3ViewController.swift
-//  Board-Game-S5
-//
-//  Created by Juan De Leon on 4/26/19.
-//  Copyright © 2019 Juan De Leon. All rights reserved.
-//
-
 import UIKit
 
 class Math3ViewController: UIViewController {
