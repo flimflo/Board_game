@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,9 +15,39 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo2" translatesAutoresizingMaskIntoConstraints="NO" id="jgM-TU-8dc">
+                                <rect key="frame" x="83" y="266" width="248" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jgM-TU-8dc" secondAttribute="height" multiplier="16:9" id="PiR-7d-Vq3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="XBn-je-Pte">
+                                <rect key="frame" x="124" y="406" width="166" height="69.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Cargando...">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <font key="NSFont" size="48" name="ArialRoundedMTBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XBn-je-Pte" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Pg9-Ah-Uiv"/>
+                            <constraint firstItem="XBn-je-Pte" firstAttribute="width" secondItem="jgM-TU-8dc" secondAttribute="width" multiplier="2:3" id="Qlv-ml-C8l"/>
+                            <constraint firstItem="jgM-TU-8dc" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.6" id="bXM-Cy-uiK"/>
+                            <constraint firstItem="XBn-je-Pte" firstAttribute="top" secondItem="jgM-TU-8dc" secondAttribute="bottom" id="sII-aT-8R9"/>
+                            <constraint firstItem="jgM-TU-8dc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="tyQ-7F-3ku"/>
+                            <constraint firstItem="XBn-je-Pte" firstAttribute="height" secondItem="jgM-TU-8dc" secondAttribute="height" multiplier="1:2" id="x41-4d-J2a"/>
+                            <constraint firstItem="jgM-TU-8dc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="3:4" id="z87-Ro-rbG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -22,4 +56,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo2" width="400" height="225"/>
+    </resources>
 </document>

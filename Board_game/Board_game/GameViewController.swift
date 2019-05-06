@@ -38,6 +38,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     var diceView = UIImageView()
     let topLabel = TopLabel()
     let initShakeImageView = UIImageView()
+    let confettiView = SAConfettiView()
     
     // MARK: - Layout constraints
     
@@ -67,9 +68,14 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     func initViews() {
         mapScrollView.addSubview(contentView)
         topLabel.setAttributes()
+        confettiView.frame = view.bounds
+        
         topLabel.isHidden = true
         blurVisualEffectView.isHidden = true
         diceView.isHidden = true
+        confettiView.isHidden = true
+        
+        view.addSubview(confettiView)
         view.addSubview(diceView)
         view.addSubview(topLabel)
         view.addSubview(initShakeImageView)
@@ -142,9 +148,12 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     
     func incrementTurn() {
         
-        if players[turnNumber].getPosition() == cells.count - 1 {
+        //if players[turnNumber].getPosition() == cells.count - 1 {
+        if true {
             gameOver = true
             inactivityTimer.invalidate()
+            displayWinner()
+
         } else {
             if turnNumber == players.count - 1 {
                 turnNumber = 0
@@ -363,6 +372,15 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         optionsButton.isEnabled = true
         disableMovePlayer = false
         resetInactivityTimer()
+    }
+    
+    func displayWinner() {
+        confettiView.isHidden = false
+        confettiView.startConfetti()
+        displayTopLabel(text: "El ganador es...\n¡\(players[turnNumber].getName())!", textColor: .white, backgroundColor: players[turnNumber].getColor())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     //MARK: Map view methods
