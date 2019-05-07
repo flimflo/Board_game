@@ -214,6 +214,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             displayTopLabel(text: "Buen intento 😐", textColor: .white, backgroundColor: #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1))
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.hideTopLabel()
+                self.incrementTurn()
             }
         } else if !completed, !isGreenChallenge {
             var plural = String()
@@ -231,9 +232,9 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             displayTopLabel(text: "Bien hecho 👍 mantienes tu posición", textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), backgroundColor: #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1))
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.hideTopLabel()
+                self.incrementTurn()
             }
         }
-        incrementTurn()
     }
     
     //Removes a button from a cell's button list
@@ -291,7 +292,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         //update view at previous cell
         updateButtonsViewAt(cellNumber: previousPosition)
         
-        
         //update view at new cell
         if nextPosition < cells.count  {
             updateButtonsViewAt(cellNumber: newPosition)
@@ -307,6 +307,8 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.isAChallenge(cellNumber: newPosition)
             }
+        } else {
+            incrementTurn()
         }
     }
     
@@ -638,7 +640,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         let side = width/3
         let xPos = width/2 - side/2
         let yPos = height/2 - side/2
-        print(width, height)
         diceView.frame = CGRect(x: xPos, y: yPos, width: side, height: side)
         diceView.isHidden = false
         diceView.image = dice.animatedDie
