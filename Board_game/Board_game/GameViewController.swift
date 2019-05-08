@@ -59,6 +59,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         if !isMapInitialized {
             displayShakePopUp()
         }
+        adjustMapZoom()
         isMapInitialized = true
     }
     
@@ -470,6 +471,15 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         let topAreaHeight = UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.height ?? 0)
         let topOffset = mapScrollView.contentSize.height + topAreaHeight + getBottomSafeAreaInsets() - windowSize.height
         mapScrollView.contentOffset = CGPoint(x: 0, y: topOffset)
+    }
+    
+    func adjustMapZoom() {
+        if UIDevice.current.orientation.isLandscape {
+            mapScrollView.minimumZoomScale = 0.4
+        } else {
+            
+            mapScrollView.minimumZoomScale = 0.6
+        }
     }
     
     func updateContentViewHeight(newHeight: CGFloat) {
