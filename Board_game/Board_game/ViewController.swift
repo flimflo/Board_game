@@ -15,15 +15,21 @@ class MenuViewController: UIViewController, UITextFieldDelegate {
     var activeField : UITextField!
     
     override func viewDidAppear(_ animated: Bool) {
-        AppUtility.lockOrientation(.portrait)
         for button in colbtColor{
             button.layer.cornerRadius = button.frame.width / 2
         }
     }
     
+    //lock landscape orientation in iPhone And iPod
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .portrait
+        }
+        return .all
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(quitaTeclado))
         self.view.addGestureRecognizer(tap)
         self.registrarseParaNotificacionesDeTeclado()
