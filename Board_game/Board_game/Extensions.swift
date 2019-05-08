@@ -19,12 +19,14 @@ extension UIButton {
     }
     
     private func getFontSize(height: CGFloat) -> CGFloat {
-        if height < 250 {
+        if height < 200 {
+            return 25
+        } else if height < 300 {
             return 30
-        } else if height < 500 {
-            return 45
+        } else if height < 400 {
+            return 40
         }
-        return 70
+        return 55
     }
 }
 

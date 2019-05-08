@@ -317,6 +317,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         initShakeImageView.frame = CGRect(x: topLabel.frame.origin.x, y: topLabel.frame.origin.y + topLabel.frame.height + 20, width: topLabel.frame.width, height: view.frame.height * 0.5 )
         menuView.frame.size = CGSize(width: view.frame.width * 0.8, height: view.frame.height * 0.6)
         menuView.center = view.center
+        setMenuButtonsAttributes()
     }
     
     //MARK: Pop Up methods
