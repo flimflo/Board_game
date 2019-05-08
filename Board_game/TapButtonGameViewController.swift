@@ -1,4 +1,5 @@
 import UIKit
+import AudioToolbox
 
 class TapButtonGameViewController: UIViewController {
     
@@ -89,6 +90,7 @@ class TapButtonGameViewController: UIViewController {
     }
     
     @objc func addPoint() {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         points += 1
         topLabel.text = "Puntos: \(points)"
         if points == 10 {

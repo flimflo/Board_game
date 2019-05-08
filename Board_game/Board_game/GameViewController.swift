@@ -239,14 +239,16 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     //Removes a button from a cell's button list
-    func removeButtonFromCell(cellNumber: Int, button: Button) {
+    func removeButtonFromCell(cellNumber: Int, playerButton: Button) {
         let cell = cells[cellNumber]
         var buttons = buttonsAtCell[cell]!
-        buttons.remove(at: button.arrivalNumber - 1)
+        buttons.remove(at: playerButton.arrivalNumber - 1)
         cell.decrementNumberOfPlayers()
         buttonsAtCell[cell] = buttons
         for button in buttons {
-            button.decrementArrivalNumber()
+            if playerButton.arrivalNumber < button.arrivalNumber {
+                button.decrementArrivalNumber()
+            }
         }
     }
     
@@ -268,14 +270,14 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         let nextPosition = previousPosition + distance
         
         //remove button from previous cell
-        removeButtonFromCell(cellNumber: previousPosition, button: playerButton)
+        removeButtonFromCell(cellNumber: previousPosition, playerButton: playerButton)
         
         //update player position
         if nextPosition >= cells.count {
             let lastCell = cells.count - 1
             addButtonAtCell(cellNumber: lastCell, button: playerButton)
             updateButtonsViewAt(cellNumber: lastCell)
-            removeButtonFromCell(cellNumber: lastCell, button: playerButton)
+            removeButtonFromCell(cellNumber: lastCell, playerButton: playerButton)
             let offset = (previousPosition + distance) % lastCell
             let backwardsDistance = lastCell - offset - player.getPosition()
             player.movePosition(By: backwardsDistance)
@@ -350,8 +352,10 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func hideShakePopUpTap(_ sender: Any) {
-        hideShakePopUp()
-        resetInactivityTimer()
+        if !disableMovePlayer{
+            hideShakePopUp()
+            resetInactivityTimer()
+        }
     }
     
     
