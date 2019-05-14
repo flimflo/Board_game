@@ -393,7 +393,9 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         confettiView.startConfetti()
         displayTopLabel(text: "El ganador es...\n¡\(players[turnNumber].getName())!", textColor: .white, backgroundColor: players[turnNumber].getColor())
         DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
-            self.dismiss(animated: true, completion: nil)
+            if (self.gameOver){
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     
