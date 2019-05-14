@@ -50,9 +50,20 @@ class Math2ViewController: UIViewController {
     @IBAction func checar(_ sender: UIButton) {
         var alertTitle: String!
         
-        //checks if the text in the button matches the answer
-        let wins = sender.titleLabel?.text == sign
-        if (wins){
+        var playerAns = Int()
+        switch sender.tag {
+        case 1:
+            playerAns = a + b
+        case 2:
+            playerAns = a - b
+        case 3:
+            playerAns = a * b
+        default:
+            break
+        }
+        
+        let wins = (answer == playerAns)
+         if (wins){
             alertTitle = "¡Respuesta Correcta!"
             let systemSoundID: SystemSoundID = 1331
             AudioServicesPlaySystemSound (systemSoundID)
