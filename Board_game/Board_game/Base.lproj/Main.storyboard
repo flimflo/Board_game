@@ -165,44 +165,31 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="Logo2" translatesAutoresizingMaskIntoConstraints="NO" id="kQT-QB-u8g">
                                 <rect key="frame" x="0.0" y="64" width="375" height="225"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="749" text="Creado por alumnos de ITC del Tec de MTY:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" minimumScaleFactor="0.14999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXa-6h-SJr">
-                                <rect key="frame" x="0.0" y="289" width="375" height="94.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="120"/>
-                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" minimumScaleFactor="0.20000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-zy-kzD">
-                                <rect key="frame" x="0.0" y="386.5" width="375" height="189"/>
-                                <string key="text">Pedro Ontiveros Presa
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="20" minimumScaleFactor="0.20000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-zy-kzD">
+                                <rect key="frame" x="0.0" y="289" width="375" height="378"/>
+                                <mutableString key="text">Serpientes &amp; Escaleras ha sido desarrollado por estudiantes del Tecnológico de Monterrey durante el semestre Enero Mayo de 2019, como parte del curso Desarrollo de Aplicaciones para Dispositivos Móviles y asesorados por la maestra Yolanda Martínez
+Treviño.
+
+Desarrolladores:
 Fernando Limón Flores
-Juan Carlos De León</string>
-                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="150"/>
+Juan Carlos De León Álvarez
+Pedro Ontiveros Presa
+
+Serpientes &amp; Escaleras se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro.
+Agradecimiento especial a Ana María Limón Flores</mutableString>
+                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="90"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Maestra Yolanda Martínez Treviño" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.20000000298023224" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2N-W5-1sk">
-                                <rect key="frame" x="0.0" y="572.5" width="375" height="94.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="120"/>
-                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="w2N-W5-1sk" firstAttribute="width" secondItem="2oj-ia-irI" secondAttribute="width" id="C53-cV-D45"/>
-                            <constraint firstItem="w2N-W5-1sk" firstAttribute="bottom" secondItem="dzQ-kH-r0N" secondAttribute="bottom" id="EtZ-NJ-Usl"/>
-                            <constraint firstItem="w2N-W5-1sk" firstAttribute="top" secondItem="Mj6-zy-kzD" secondAttribute="bottom" id="H8C-FG-W4F"/>
+                            <constraint firstItem="Mj6-zy-kzD" firstAttribute="top" secondItem="kQT-QB-u8g" secondAttribute="bottom" id="7od-96-Fde"/>
+                            <constraint firstItem="dzQ-kH-r0N" firstAttribute="bottom" secondItem="Mj6-zy-kzD" secondAttribute="bottom" id="FhY-MZ-7Yg"/>
                             <constraint firstItem="kQT-QB-u8g" firstAttribute="top" secondItem="dzQ-kH-r0N" secondAttribute="top" id="M6u-ud-HMN"/>
-                            <constraint firstItem="jXa-6h-SJr" firstAttribute="width" secondItem="2oj-ia-irI" secondAttribute="width" id="PQP-p5-mRq"/>
-                            <constraint firstItem="w2N-W5-1sk" firstAttribute="height" secondItem="Mj6-zy-kzD" secondAttribute="height" multiplier="1:2" id="PZp-LD-IcE"/>
-                            <constraint firstItem="jXa-6h-SJr" firstAttribute="centerX" secondItem="2oj-ia-irI" secondAttribute="centerX" id="Xrt-GM-Fhv"/>
                             <constraint firstItem="Mj6-zy-kzD" firstAttribute="width" secondItem="2oj-ia-irI" secondAttribute="width" id="aJF-SL-U4S"/>
-                            <constraint firstItem="Mj6-zy-kzD" firstAttribute="top" secondItem="jXa-6h-SJr" secondAttribute="bottom" id="bSq-Ep-rMf"/>
-                            <constraint firstItem="w2N-W5-1sk" firstAttribute="centerX" secondItem="2oj-ia-irI" secondAttribute="centerX" id="d2E-kf-kCQ"/>
                             <constraint firstItem="kQT-QB-u8g" firstAttribute="centerX" secondItem="2oj-ia-irI" secondAttribute="centerX" id="d7Y-SO-IB4"/>
                             <constraint firstItem="kQT-QB-u8g" firstAttribute="width" secondItem="2oj-ia-irI" secondAttribute="width" id="epq-W8-Lxh"/>
-                            <constraint firstItem="jXa-6h-SJr" firstAttribute="top" secondItem="kQT-QB-u8g" secondAttribute="bottom" id="gMM-Dz-Jsj"/>
-                            <constraint firstItem="Mj6-zy-kzD" firstAttribute="height" secondItem="jXa-6h-SJr" secondAttribute="height" multiplier="2:1" id="gva-m2-2sa"/>
                             <constraint firstItem="Mj6-zy-kzD" firstAttribute="centerX" secondItem="2oj-ia-irI" secondAttribute="centerX" id="j1v-ux-Dsa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dzQ-kH-r0N"/>
@@ -594,7 +581,7 @@ Juan Carlos De León</string>
                                         <rect key="frame" x="0.0" y="0.0" width="356" height="300"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Motion_Ex2_1" translatesAutoresizingMaskIntoConstraints="NO" id="mXo-Ya-gUi">
-                                                <rect key="frame" x="89" y="75" width="178" height="150"/>
+                                                <rect key="frame" x="89" y="75" width="178" height="150.00000000000011"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -658,7 +645,7 @@ Juan Carlos De León</string>
                                         <rect key="frame" x="0.0" y="0.0" width="356" height="300"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Swipe_1" translatesAutoresizingMaskIntoConstraints="NO" id="WFz-01-IdB">
-                                                <rect key="frame" x="89" y="75" width="178" height="150"/>
+                                                <rect key="frame" x="89" y="75" width="178" height="150.00000000000045"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
