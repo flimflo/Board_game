@@ -165,9 +165,9 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="Logo2" translatesAutoresizingMaskIntoConstraints="NO" id="kQT-QB-u8g">
                                 <rect key="frame" x="0.0" y="64" width="375" height="225"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="20" minimumScaleFactor="0.20000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-zy-kzD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="23" minimumScaleFactor="0.20000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mj6-zy-kzD">
                                 <rect key="frame" x="0.0" y="289" width="375" height="378"/>
-                                <mutableString key="text">Serpientes &amp; Escaleras ha sido desarrollado por estudiantes del Tecnológico de Monterrey durante el semestre Enero Mayo de 2019, como parte del curso Desarrollo de Aplicaciones para Dispositivos Móviles y asesorados por la maestra Yolanda Martínez
+                                <string key="text">Serpientes &amp; Escaleras ha sido desarrollado por estudiantes del Tecnológico de Monterrey durante el semestre Enero Mayo de 2019, como parte del curso Desarrollo de Aplicaciones para Dispositivos Móviles y asesorados por la maestra Yolanda Martínez
 Treviño.
 
 Desarrolladores:
@@ -175,9 +175,11 @@ Fernando Limón Flores
 Juan Carlos De León Álvarez
 Pedro Ontiveros Presa
 
-Serpientes &amp; Escaleras se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro.
-Agradecimiento especial a Ana María Limón Flores</mutableString>
-                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="90"/>
+Imágenes: 
+Ana María Limón Flores
+
+Serpientes &amp; Escaleras se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro.</string>
+                                <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="85"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
